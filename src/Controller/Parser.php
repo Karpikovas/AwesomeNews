@@ -78,7 +78,7 @@ public function index()
 // Here we have all needed information:
 
     $response = new Response();
-    $response ->setContent(json_encode(array($productsInfo)));
+    $response ->setContent(json_encode(array($productsInfo), JSON_UNESCAPED_UNICODE));
 
     $response->headers->set('Content-Type', 'application/json');
 

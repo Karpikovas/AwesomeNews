@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4211fa0-19b1-4db9-98a9-6dd4ce5481f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/Parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AwesomeNewsSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AwesomeNewsSite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/somefile.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/somefile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Parser.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +20,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/Parser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+            <state relative-caret-position="382">
+              <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
               <folding>
                 <element signature="e#116#157#0#PHP" expanded="true" />
-                <marker date="1552410478597" expanded="true" signature="2011:2071" ph="..." />
+                <marker date="1552411332379" expanded="true" signature="2035:2095" ph="..." />
               </folding>
             </state>
           </provider>
@@ -222,12 +216,12 @@
       <workItem from="1551537054665" duration="1702000" />
       <workItem from="1552069732045" duration="7770000" />
       <workItem from="1552304468963" duration="105000" />
-      <workItem from="1552406862615" duration="3612000" />
+      <workItem from="1552406862615" duration="4364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13189000" />
+    <option name="totallyTimeSpent" value="13941000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -364,11 +358,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Parser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        <state relative-caret-position="382">
+          <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
           <folding>
             <element signature="e#116#157#0#PHP" expanded="true" />
-            <marker date="1552410478597" expanded="true" signature="2011:2071" ph="..." />
+            <marker date="1552411332379" expanded="true" signature="2035:2095" ph="..." />
           </folding>
         </state>
       </provider>
