@@ -56,8 +56,8 @@ public function index()
 
 
     $baseEndPoint = 'https://www.4pda.ru';
-//    $blueRayPlayersCategory = '/2019/03/12/356380/';
-    $blueRayPlayersCategory = '/2019/03/12/356378/';
+    $blueRayPlayersCategory = '/2019/03/12/356380/';
+//    $blueRayPlayersCategory = '/2019/03/12/356378/';
     $target = $baseEndPoint . '/' . $blueRayPlayersCategory;
 
 // Crawler
@@ -66,12 +66,14 @@ public function index()
 
 // Collect info
     $productsInfo = $crawler
-        ->filter('.content-box')
+        ->filter('body')
         ->each(function (Crawler $nodeCrawler) use ($baseEndPoint) {
-//            $directors = $nodeCrawler->filter('.content-box');
-            $news = $nodeCrawler->text();
+            $content = $nodeCrawler->filter('.content')->text();
+            $title = $nodeCrawler->filter('.product-detail')->filter('.description')->filter('h1')->text();
+            $author = $nodeCrawler->filter('.product-detail')->filter('.name')->text();
 
-            return ['title' =>$news];
+
+            return ['title' => $title, 'author' =>$author, 'content' =>$content];
     })
     ;
 
