@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4211fa0-19b1-4db9-98a9-6dd4ce5481f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AwesomeNewsSite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AwesomeNewsSite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/somefile.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/somefile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/somefile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/somefile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,15 +20,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Parser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+            <state relative-caret-position="25">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="50" />
               <folding>
                 <element signature="e#116#157#0#PHP" expanded="true" />
-                <marker date="1552478021359" expanded="true" signature="2226:2286" ph="..." />
+                <marker date="1552635254489" expanded="true" signature="2219:2279" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -70,7 +83,9 @@
         <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/var/cache/dev/ContainerEsQ0Yx2/getDefaultControllerService.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
+        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/Controller/Parser.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -167,27 +182,6 @@
               <item name="ANS" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ANS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ANS" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ANS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ANS" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="css-selector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ANS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ANS" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="css-selector" type="462c0819:PsiDirectoryNode" />
-              <item name="XPath" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -237,7 +231,9 @@
       <workItem from="1552414624802" duration="47000" />
       <workItem from="1552417321115" duration="32000" />
       <workItem from="1552469059977" duration="50000" />
-      <workItem from="1552477359994" duration="688000" />
+      <workItem from="1552477359994" duration="800000" />
+      <workItem from="1552634962828" duration="469000" />
+      <workItem from="1552717334542" duration="390000" />
     </task>
     <task id="LOCAL-00001" summary="Исправление кодировки json">
       <created>1552411423345</created>
@@ -246,17 +242,23 @@
       <option name="project" value="LOCAL" />
       <updated>1552411423345</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Доработка парсинга">
+      <created>1552478110142</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552478110142</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17310000" />
+    <option name="totallyTimeSpent" value="18281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26928896" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27760968" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -306,12 +308,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Исправление кодировки json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление кодировки json" />
+    <MESSAGE value="Доработка парсинга" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработка парсинга" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/symfony.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -372,12 +372,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Parser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+        <state relative-caret-position="25">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="50" />
           <folding>
             <element signature="e#116#157#0#PHP" expanded="true" />
-            <marker date="1552478021359" expanded="true" signature="2226:2286" ph="..." />
+            <marker date="1552635254489" expanded="true" signature="2219:2279" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -388,6 +395,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
