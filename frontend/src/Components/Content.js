@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import back from "../background.jpg";
 
 const styles = theme => ({
     content: {
@@ -14,7 +13,7 @@ const styles = theme => ({
         }),
     },
 });
-function Home(props) {
+function Content(props) {
     const { classes } = props;
     return (
         <div className={classes.content}>
@@ -25,8 +24,8 @@ function Home(props) {
     );
 }
 
-Home.propTypes = {
+Content.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Content);
