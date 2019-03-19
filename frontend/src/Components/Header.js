@@ -12,8 +12,9 @@ import back from '../Image/фон.svg';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Loyalty';
 import Chip from '@material-ui/core/Chip';
-import PublicIcon from '@material-ui/icons/Public';
+import PublicIcon from '@material-ui/icons/Language';
 import GroupIcon from '@material-ui/icons/Group';
+import Typography from "@material-ui/core/Typography";
 
 
 const drawerWidth = 300;
@@ -95,7 +96,15 @@ class Header extends React.Component {
                                 {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                             </IconButton>
                         </div>
-                        <Divider/>
+                        <Divider variant="middle" style={{backgroundColor:"#4a4d4f"}}/>
+                        <div>
+                            <Typography variant="overline" style={{position:"relative", display:"inline-block", fontSize: 16, textAlign:'center', color: "#737577", fontFamily:"Russo One"}}>
+                                Теги по теме
+                            </Typography>
+                            <Typography variant="overline" style={{paddingLeft: 10, position:"relative", display:"inline-block",fontSize: 16, textAlign:'center', color: "white", fontFamily:"Russo One"}}>
+                                Политика
+                            </Typography>
+                        </div>
                         <List style={{padding:7, justiftyContent:"center", alignItems:"center"}}>
                             {['Внешняя политика', 'В мире', 'Власть', 'Регионы'].map((text, index) => (
                                 <Chip
@@ -109,8 +118,8 @@ class Header extends React.Component {
                                 />
                             ))}
                         </List>
-                        <Divider />
-                        <List>
+                        <Divider variant="middle" style={{backgroundColor:"#4a4d4f"}}/>
+                        <List style={{padding:7, justiftyContent:"center", alignItems:"center"}}>
                             {['Религия', 'Происшествия', 'Образование', 'Здоровье'].map((text, index) => (
                                 <Chip
                                     label={text}
