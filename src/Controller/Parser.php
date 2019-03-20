@@ -83,6 +83,7 @@ public function index()
     $response ->setContent(json_encode($productsInfo, JSON_UNESCAPED_UNICODE));
 
     $response->headers->set('Content-Type', 'application/json');
+    $response->headers->set('Access-Control-Allow-Origin', '*');
 
     $filename = 'somefile.json';
     $filenameNotJson = 'somefile.txt';
