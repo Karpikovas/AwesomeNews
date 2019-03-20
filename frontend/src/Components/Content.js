@@ -1,41 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
 import StarIcon from '@material-ui/icons/Star';
+import axios from 'axios';
+
 
 
 const styles = theme => ({
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing.unit * 3,
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        height:'100 px',
-        width:'100px',
-    },
+
 });
-function Content(props) {
-    const { classes } = props;
-    return (
-        <VerticalTimeline>
+class Content extends  React.Component{
+    state = {
+        news: ''
+    }
+    componentWillMount() {
+        axios
+            .get("http://localhost/awesomenewssiteever/public/")
+            .then(({ data }) => {
+                this.setState({
+                    news: data
+                });
+                console.log(data);
+            });
+    }
+    render(){
+        const { classes } = this.props;
+        return (
+        <VerticalTimeline >
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
                 date="2011 - present"
                 iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                 icon={<WorkIcon />}
             >
-                <h3 className="vertical-timeline-element-title">Creative Director</h3>
-                <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                <div >
+                <h3 className="vertical-timeline-element-title">{this.state.news}</h3>
+                <h4 className="vertical-timeline-element-subtitle">{this.state.news.title}</h4>
                 <p>
-                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                    Creative Direction, User Experience, Visual Design, SEO, Online Marketing
                 </p>
+                </div>
             </VerticalTimelineElement>
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
@@ -115,6 +123,7 @@ function Content(props) {
             />
         </VerticalTimeline>
     );
+    }
 }
 
 Content.propTypes = {

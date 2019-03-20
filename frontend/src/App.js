@@ -3,22 +3,25 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Header from './Components/Header';
 import Content from './Components/Content';
-import back from "./Image/back.svg";
 import Footer from './Components/Footer';
+import './App.css';
 
 const styles = theme => ({
 });
-let scrollbarStyles = {borderRadius: 5};
 class App extends React.Component {
-    state = {};
     render() {
         const { classes, theme } = this.props;
 
         return (
-            <div>
-            <Header/>
+            <div style={{width:'100 vw', background: 'linear-gradient(to top, #8CBCDE,  #ffffff)', backgroundAttachment:'fixed'}}>
+                <Header/>
+                <Content>
 
-                <Content/>
+                <a href="/"
+                   className="Tag Tag--electricVoilet">Design &amp; Illustration</a>
+
+
+                </Content>
                 <Footer/>
             </div>
         );

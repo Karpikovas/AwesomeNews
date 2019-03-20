@@ -82,7 +82,7 @@ class Header extends React.Component {
         return (
                 <div className={classes.root}>
                     <AppBar style={{background:'transparent', boxShadow: 'none'}}>
-                        <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'17vh', marginLeft: 0, marginRight: "auto", marginTop: 5}} />
+                        <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'15vh', marginLeft: -15, marginRight: "auto", marginTop: 5}} />
                         <Toolbar>
 
                             <Fab  color="secondary" aria-label="Menu" onClick={this.handleDrawerOpen} style={{marginLeft:"auto", marginRight: 30, marginTop: -210}}>

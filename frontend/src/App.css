@@ -1,0 +1,40 @@
+.Tag {
+    background-color: #fff;
+    display: inline-block;
+    border-radius: 0 1px 1px 0;
+    position: relative;
+    color: #000;
+    line-height: 14px;
+    padding: 4px 8px 4px 10px;
+    margin-left: 8px;
+    font-size: 11px;
+    transition: opacity 0.2s;
+}
+.Tag:before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent;
+    border-right: 8px solid #fff;
+    border-bottom: 11px solid transparent;
+}
+.Tag:after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background: #000;
+    left: 0;
+    top: 9px;
+}
+.Tag--electricVoilet {
+    background-color: #5100ff;
+    color: #fff;
+}
+.Tag--electricVoilet:before {
+    border-right-color: #5100ff;
+}
