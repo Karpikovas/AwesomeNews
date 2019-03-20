@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+import VerticalTimeline  from './VerticalTimeline';
 import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
 import StarIcon from '@material-ui/icons/Star';
 import axios from 'axios';
-
+import VerticalTimelineElement from './VerticalTimelineElement';
+import './VerticalTimeline.css';
+import './VerticalTimelineElement.css';
 
 
 const styles = theme => ({
-
+    content:{
+        background: 'blue',
+    }
 });
 class Content extends  React.Component{
     state = {
@@ -30,17 +33,17 @@ class Content extends  React.Component{
     render(){
         const { classes } = this.props;
         return (
-        <VerticalTimeline >
+        <VerticalTimeline>
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
                 date="2011 - present"
                 iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                 icon={<WorkIcon />}
             >
-                <div >
+                <div>
                 <h3 className="vertical-timeline-element-title">{this.state.news}</h3>
                 <h4 className="vertical-timeline-element-subtitle">{this.state.news.title}</h4>
-                <p>
+                <p >
                     Creative Direction, User Experience, Visual Design, SEO, Online Marketing
                 </p>
                 </div>

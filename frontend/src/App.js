@@ -13,7 +13,7 @@ class App extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <div style={{width:'100 vw', background: 'linear-gradient(to top, #8CBCDE,  #ffffff)', backgroundAttachment:'fixed'}}>
+            <div style={{width:'100 vw'}}>
                 <Header/>
                 <Content>
 
