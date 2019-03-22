@@ -81,7 +81,7 @@ class Header extends React.Component {
 
         return (
                 <div className={classes.root}>
-                    <AppBar style={{background:'transparent', boxShadow: 'none'}}>
+                    <AppBar style={{background:'transparent', boxShadow: 'none', height: 70}}>
                         <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'15vh', marginLeft: -15, marginRight: "auto", marginTop: 5}} />
                         <Toolbar>
 

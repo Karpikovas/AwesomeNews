@@ -1,8 +1,8 @@
-index:
-    path: /
-    controller: App\Controller\Parser::index
+#index:
+#    path: /
+#    controller: App\Controller\Parser::index
 rss:
-    path: /RSS
+    path: /
     controller: App\Controller\RSS::index
 
 rss2json:
