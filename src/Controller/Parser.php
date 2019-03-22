@@ -57,6 +57,7 @@ public function index()
 
     $baseEndPoint = 'https://www.4pda.ru';
     $blueRayPlayersCategory = '/2019/03/12/356380/';
+    echo date("Y/m/d");
 //    $blueRayPlayersCategory = '/2019/03/12/356378/';
     $target = $baseEndPoint . '/' . $blueRayPlayersCategory;
 

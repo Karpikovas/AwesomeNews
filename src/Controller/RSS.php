@@ -16,26 +16,124 @@ class RSS
 {
     public function index(){
         $urlYandex = "http://news.yandex.ru/computers.rss";
-        $urlLenta = "http://lenta.ru/rss/news";
-        $contentLenta = file_get_contents($urlLenta);
+        $urlIXBT = "https://www.ixbt.com/export/news.rss";
+        $url4pda = "http://4pda.ru/feed/";
+        $contentIXBT = file_get_contents($urlIXBT);
         $contentYandex = file_get_contents($urlYandex);
+        $content4pda = file_get_contents($url4pda);
 
-        $itemsLenta = new \SimpleXmlElement($contentLenta);
+        $filename = "XMLRSSIXBT.xml";
+        $filenameY = "XMLRSSYandex.xml";
+        $filename4pda = "XMLRSS4pda.xml";
+        file_put_contents($filename, $contentIXBT);
+        file_put_contents($filenameY, $contentYandex);
+        file_put_contents($filename4pda, $content4pda);
+
+        $itemsIXBT = new \SimpleXmlElement($contentIXBT);
         $itemsYandex = new \SimpleXMLElement($contentYandex);
+        $items4pda = new \SimpleXMLElement($content4pda);
 
 
-
-        foreach($itemsLenta -> channel -> item as $item) {
-            echo  "<li><a href = '$item->link}' title = '$item->title'>" .
-            $item->title . "</a> - " . $item -> description . "</li>";
-        }
         echo "<p>";
-        foreach ($itemsYandex ->channel -> item as $item){
-            echo "<li><a href='$item->link}' title='$item->title'>" .
-                $item->title . "</a> - " . $item ->description . "</li>";
+        foreach($items4pda -> channel -> item as $item) {
+            echo "<li><a href = '$item->link}' title = '$item->title'>" .
+                $item->title . "</a> - " . $item->description . " - " . $item->pubDate . " - " . $item->category . "</li>";
+
+            $json['item'][] = array([
+                "title" => $item->title,
+                "link" => $item->link,
+                "description" => $item->description,
+                "date" => $item->pubDate,
+                "category" => $item->category
+            ]);
         }
         echo "</p>";
 
+        echo "<p>";
+        foreach($itemsIXBT -> channel -> item as $item) {
+            echo "<li><a href = '$item->link}' title = '$item->title'>" .
+                $item->title . "</a> - " . $item->description . " - " . $item->pubDate . " - " . $item->category . "</li>";
+
+            $json['item'][] = array([
+                "title" => $item->title,
+                "link" => $item->link,
+                "description" => $item->description,
+                "date" => $item->pubDate,
+                "category" => $item->category
+            ]);
+        }
+        echo "</p>";
+
+
+        echo "<p>";
+        foreach ($itemsYandex ->channel -> item as $item){
+            echo "<li><a href='$item->link}' title='$item->title'>" .
+                $item->title . "</a> - " . $item ->description . " - " . $item ->pubDate. " - ". $item->category."</li>";
+
+            $json['item'][] = array([
+                "title" => $item->title,
+                "link" => $item->link,
+                "description" => $item->description,
+                "date" => $item->pubDate,
+                "category" => $item->category
+            ]);
+
+
+        }
+        echo "</p>";
+
+
+
+        $response = new Response();
+        $response->setContent(json_encode($json['item'], JSON_UNESCAPED_UNICODE));
+
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $filename = 'somefileRSS.json';
+
+        file_put_contents($filename, $response);
+
+
+
+
         return new Response();
     }
+
+//    public function getRSS($url){
+//
+//        $content = file_get_contents($url);
+//
+//        $filename = "XML" .$url.".xml";
+//        file_put_contents($filename, $content);
+//
+//        $items = new \SimpleXmlElement($content);
+//
+//        echo "<p>";
+//        foreach ($items ->channel -> item as $item){
+//            echo "<li><a href='$item->link}' title='$item->title'>" .
+//                $item->title . "</a> - " . $item ->description . " - " . $item ->pubDate. " - ". $item->category."</li>";
+//
+//            $json['item'][] = array([
+//                "title" => $item->title,
+//                "link" => $item->link,
+//                "description" => $item->description,
+//                "date" => $item->pubDate,
+//                "category" => $item->category
+//            ]);
+//
+//
+//        }
+//        echo "</p>";
+//
+//        $response = new Response();
+//        $response->setContent(json_encode($json['item'], JSON_UNESCAPED_UNICODE));
+//
+//        $response->headers->set('Content-Type', 'application/json');
+//        $response->headers->set('Access-Control-Allow-Origin', '*');
+//
+//        $filename = 'somefileRSS.json';
+//
+//        file_put_contents($filename, $response);
+//    }
 }
