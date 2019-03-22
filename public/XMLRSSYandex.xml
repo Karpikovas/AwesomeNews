@@ -9,7 +9,11 @@
 <link>https://news.yandex.ru/computers.html?from=rss</link>
 <title>Яндекс.Новости: Технологии</title>
 </image>
+<<<<<<< HEAD
 <lastBuildDate>22 Mar 2019 17:31:15 +0000</lastBuildDate>
+=======
+<lastBuildDate>22 Mar 2019 16:20:17 +0000</lastBuildDate>
+>>>>>>> 4522210045c807b5ad7307a45bfb5dc278f8df4e
 <item>
 <title>Xiaomi и Huawei расширят российские сети</title>
 <link>https://news.yandex.ru/story/Xiaomi_i_Huawei_rasshiryat_rossijskie_seti--eb8dfe153a75d112012880e448e87d24?lang=ru&amp;from=rss&amp;stid=3h5Vl-2dKaw6GcnxRqJW</link>
@@ -18,11 +22,19 @@
 <pubDate>21 Mar 2019 22:24:00 +0000</pubDate>
 </item>
 <item>
+<<<<<<< HEAD
 <title>Microsoft прекращает поддержку Windows 7</title>
 <link>https://news.yandex.ru/story/Microsoft_prekrashhaet_podderzhku_Windows_7--e1a1b819f11c3b0767d081b29a2ebd05?lang=ru&amp;from=rss&amp;stid=Lkx1jwU8DFVI4yVA_qp8</link>
 <guid>https://news.yandex.ru/story/Microsoft_prekrashhaet_podderzhku_Windows_7--e1a1b819f11c3b0767d081b29a2ebd05?lang=ru&amp;from=rss&amp;stid=Lkx1jwU8DFVI4yVA_qp8</guid>
 <description>Корпорация Microsoft с 2020 года прекращает поддержку своей операционной системы Windows 7. – Microsoft взяла на себя обязательство обеспечить поддержку ОС Windows 7 в течение 10 лет с момента ее выпуска 22 октября 2009 года.</description>
 <pubDate>22 Mar 2019 09:41:47 +0000</pubDate>
+=======
+<title>Поддержку Windows 7 прекратит Microsoft</title>
+<link>https://news.yandex.ru/story/Podderzhku_Windows_7_prekratit_Microsoft--0ecb2efd6e4888049d7fd972df1cc277?lang=ru&amp;from=rss&amp;stid=Lkx1jwU8DFVIoYfNjJ78</link>
+<guid>https://news.yandex.ru/story/Podderzhku_Windows_7_prekratit_Microsoft--0ecb2efd6e4888049d7fd972df1cc277?lang=ru&amp;from=rss&amp;stid=Lkx1jwU8DFVIoYfNjJ78</guid>
+<description>О скором окончании поддержки Windows 7 объявила корпорация Microsoft. Операционная система с 14 января 2020 года прекратит обновляться. После этого Windows 7 перестанет считаться безопасной.</description>
+<pubDate>22 Mar 2019 07:45:40 +0000</pubDate>
+>>>>>>> 4522210045c807b5ad7307a45bfb5dc278f8df4e
 </item>
 <item>
 <title>Беспроводная зарядка AirPower уже появилась на сайте Apple</title>
@@ -61,8 +73,13 @@
 </item>
 <item>
 <title>Роскомнадзор заказал систему контроля за поисковиками и VPN-сервисами</title>
+<<<<<<< HEAD
 <link>https://news.yandex.ru/story/Roskomnadzor_zakazal_sistemu_kontrolya_za_poiskovikami_i_VPN-servisami--8a992c0e5b222166d03a9ca0a1e25c85?lang=ru&amp;from=rss&amp;stid=Z6mKI8AVypljoGZn2yrH</link>
 <guid>https://news.yandex.ru/story/Roskomnadzor_zakazal_sistemu_kontrolya_za_poiskovikami_i_VPN-servisami--8a992c0e5b222166d03a9ca0a1e25c85?lang=ru&amp;from=rss&amp;stid=Z6mKI8AVypljoGZn2yrH</guid>
+=======
+<link>https://news.yandex.ru/story/Roskomnadzor_zakazal_sistemu_kontrolya_za_poiskovikami_i_VPN-servisami--8a992c0e5b222166d03a9ca0a1e25c85?lang=ru&amp;from=rss&amp;stid=I8AVZ6mKypljoGZn2yrH</link>
+<guid>https://news.yandex.ru/story/Roskomnadzor_zakazal_sistemu_kontrolya_za_poiskovikami_i_VPN-servisami--8a992c0e5b222166d03a9ca0a1e25c85?lang=ru&amp;from=rss&amp;stid=I8AVZ6mKypljoGZn2yrH</guid>
+>>>>>>> 4522210045c807b5ad7307a45bfb5dc278f8df4e
 <description>Как отмечает в свою очередь представитель Роскомнадзора, новая система как раз и позволит поисковикам, VPN и анонимайзерам получать актуальный список запрещенных ресурсов в том виде, в котором они смогут его обрабатывать.</description>
 <pubDate>21 Mar 2019 21:00:43 +0000</pubDate>
 </item>
@@ -74,11 +91,19 @@
 <pubDate>22 Mar 2019 12:13:24 +0000</pubDate>
 </item>
 <item>
+<<<<<<< HEAD
 <title>Facebook хранил в открытом виде пароли миллионов пользователей</title>
 <link>https://news.yandex.ru/story/Facebook_khranil_v_otkrytom_vide_paroli_millionov_polzovatelej--ba28dd605368f507b72b086ff44b70d7?lang=ru&amp;from=rss&amp;stid=YcB3lzjLgxjdzuBQ_5aX</link>
 <guid>https://news.yandex.ru/story/Facebook_khranil_v_otkrytom_vide_paroli_millionov_polzovatelej--ba28dd605368f507b72b086ff44b70d7?lang=ru&amp;from=rss&amp;stid=YcB3lzjLgxjdzuBQ_5aX</guid>
 <description>В компании заверили, что они устранили эту проблему, но в качестве меры предосторожности будут уведомлять всех пользователей, чьи пароли хранились таким образом. Как ранее сообщали «Кубанские новости», в Facebook появится функция очистки истории авторизаций.</description>
 <pubDate>22 Mar 2019 13:13:58 +0000</pubDate>
+=======
+<title>Facebook хранила в открытом виде пароли миллионов пользователей</title>
+<link>https://news.yandex.ru/story/Facebook_khranila_v_otkrytom_vide_paroli_millionov_polzovatelej--fb86859e705152734e3b5c5c8d66db9b?lang=ru&amp;from=rss&amp;stid=lzjLYcB3gxjd_5aXhPuF</link>
+<guid>https://news.yandex.ru/story/Facebook_khranila_v_otkrytom_vide_paroli_millionov_polzovatelej--fb86859e705152734e3b5c5c8d66db9b?lang=ru&amp;from=rss&amp;stid=lzjLYcB3gxjd_5aXhPuF</guid>
+<description>В Facebook уже устранили недочет в системе и тех пользователей, у которых хранился пароль в незашифрованном виде, позже предупредят с рекомендацией изменить пароль. В целом от ошибки пострадало несколько миллионов пользователей Facebook и Facebook Lite (упрощенной версии соцсети).</description>
+<pubDate>22 Mar 2019 09:48:59 +0000</pubDate>
+>>>>>>> 4522210045c807b5ad7307a45bfb5dc278f8df4e
 </item>
 <item>
 <title>В Сети уличили Тимати в подделке наушников с AliExpress</title>
