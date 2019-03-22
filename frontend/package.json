@@ -12,7 +12,8 @@
     "react-scripts": "2.1.5",
     "react-scrollbar": "^0.5.4",
     "react-scrollbar-js": "^1.0.1",
-    "react-vertical-timeline-component": "^2.3.1"
+    "react-vertical-timeline-component": "^2.3.1",
+    "rss-parser": "^3.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
