@@ -65,22 +65,23 @@ public function index()
     $crawler->add(file_get_contents($target));
 
 // Collect info
-    $productsInfo = $crawler
+    $productsInfoIT = $crawler
         ->filter('body')
         ->each(function (Crawler $nodeCrawler) use ($baseEndPoint) {
             $content = $nodeCrawler->filter('.content')->text();
             $title = $nodeCrawler->filter('.product-detail')->filter('.description')->filter('h1')->text();
             $author = $nodeCrawler->filter('.product-detail')->filter('.name')->text();
+            $data = $nodeCrawler->filter('.product-detail')->filter('.date')->text();
 
 
-            return ['title' => $title, 'author' =>$author, 'content' =>$content];
+            return ['category' => "IT",'title' => $title, 'author' =>$author, 'data' => $data ,  'content' =>$content];
     })
     ;
 
 // Here we have all needed information:
 
     $response = new Response();
-    $response ->setContent(json_encode($productsInfo, JSON_UNESCAPED_UNICODE));
+    $response ->setContent(json_encode($productsInfoIT, JSON_UNESCAPED_UNICODE));
 
     $response->headers->set('Content-Type', 'application/json');
     $response->headers->set('Access-Control-Allow-Origin', '*');
@@ -90,7 +91,7 @@ public function index()
 //записываем текст в файл
     file_put_contents($filename, $response);
 
-    $data = serialize($productsInfo);
+    $data = serialize($productsInfoIT);
     file_put_contents($filenameNotJson, $data);
 
     return $response;
