@@ -35,15 +35,16 @@ class RSS
         $response->setContent($jsonfileIXBT);
 
 
+
         $this->getRSS2JSON($urlIXBT, "IXBT");
         $this->getRSS2JSON($url4pda, "4pda");
         $this->getRSS2JSON($urlYandex, "Yandex");
 
 
-
-        $itemsIXBT = new \SimpleXmlElement($contentIXBT);
-        $itemsYandex = new \SimpleXMLElement($contentYandex);
-        $items4pda = new \SimpleXMLElement($content4pda);
+//
+//        $itemsIXBT = new \SimpleXmlElement($contentIXBT);
+//        $itemsYandex = new \SimpleXMLElement($contentYandex);
+//        $items4pda = new \SimpleXMLElement($content4pda);
 
 
 //        echo "<p>";
