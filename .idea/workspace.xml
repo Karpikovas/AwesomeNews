@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8cfa6b5-834f-411d-94c7-f50f2db3b5ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/4pda.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Yandex.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/somefile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Components/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/4pda.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/4pda.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/IXBT.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/IXBT.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Yandex.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/Yandex.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/Components/Content.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+            <state relative-caret-position="289">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -258,10 +257,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5118000" />
+    <option name="totallyTimeSpent" value="5631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -384,8 +384,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/Components/Content.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+        <state relative-caret-position="289">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

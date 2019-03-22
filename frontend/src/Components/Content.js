@@ -10,20 +10,20 @@ import VerticalTimelineElement from './VerticalTimelineElement';
 import './VerticalTimeline.css';
 import './VerticalTimelineElement.css';
 import Chip from "./Header";
-/*
+
 let Parser = require('rss-parser');
 let parser = new Parser();
 
 (async () => {
 
-    let feed = await parser.parseURL("https://cors-anywhere.herokuapp.com/"+'https://news.yandex.ru/auto.rss');
+    let feed = await parser.parseURL('http://localhost/awesomenewssiteever/public/index.php/RSS');
     console.log(feed.title);
 
     feed.items.forEach(item => {
         console.log(item.title + ':' + item.link)
     });
 
-})();*/
+})();
 const styles = theme => ({
     content:{
         background: 'blue',
@@ -44,14 +44,14 @@ class Content extends  React.Component{
             .catch((error) => {
                 console.error(error);
             });*/
-        axios
+        /*axios
             .get('http://localhost/awesomenewssiteever/public/Yandex.json')
             .then(({ data }) => {
-                /*this.setState({
+                this.setState({
                     news: data
-                });*/
+                });
                 console.log(data);
-            });
+            });*/
     }/*
     componentWillMount() {{this.FetchDataFromRssFeed()}
     }
