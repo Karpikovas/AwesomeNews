@@ -24,6 +24,7 @@ const styles = theme => ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundHeight: '100 vh',
+        backgroundWidth: '100vh',
         background:'transparent',
     },
     toolbar: {

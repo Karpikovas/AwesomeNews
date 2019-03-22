@@ -9,7 +9,7 @@ import axios from 'axios';
 import VerticalTimelineElement from './VerticalTimelineElement';
 import './VerticalTimeline.css';
 import './VerticalTimelineElement.css';
-
+import Chip from "./Header";
 
 const styles = theme => ({
     content:{
@@ -17,37 +17,69 @@ const styles = theme => ({
     }
 });
 class Content extends  React.Component{
+
     state = {
-        news: ''
-    }
+        news: [],
+        content:[]
+    }/*
     componentWillMount() {
         axios
-            .get("http://localhost/awesomenewssiteever/public/")
+            .get('http://localhost/awesomenewssiteever/public/index.php/RSS')
             .then(({ data }) => {
                 this.setState({
                     news: data
                 });
                 console.log(data);
             });
+    }*/
+    componentWillMount() {{this.FetchDataFromRssFeed()}
     }
+
+    FetchDataFromRssFeed=()=> {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = () => {
+            if (request.readyState == 4 && request.status == 200) {
+                var myObj = JSON.parse(request.responseText);
+
+                    this.setState({
+                        content: myObj
+                    });
+                console.log(myObj);
+            }
+        }
+        request.open("GET", "https://cors-anywhere.herokuapp.com/"+'http://localhost/awesomenewssiteever/public/XMLRSS4pda.xml', true);
+        request.send();
+    }
+    getShortStr = (content) => {
+        var arrStr = content.split('.');
+        /*
+        this.setState({
+            content: [...this.state.content, arrStr[0]],
+        });*/
+        return arrStr[0];
+    };
     render(){
         const { classes } = this.props;
         return (
         <VerticalTimeline>
-            <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                date="2011 - present"
-                iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                icon={<WorkIcon />}
-            >
-                <div>
-                <h3 className="vertical-timeline-element-title">{this.state.news}</h3>
-                <h4 className="vertical-timeline-element-subtitle">{this.state.news.title}</h4>
-                <p >
-                    Creative Direction, User Experience, Visual Design, SEO, Online Marketing
-                </p>
-                </div>
-            </VerticalTimelineElement>
+            {this.state.news.map(item => (
+                <VerticalTimelineElement
+                    key = {item.title}
+                    className="vertical-timeline-element--work"
+                    date="2011 - present"
+                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+                    icon={<WorkIcon />}
+                >
+                    <div>
+                        <h3 className="vertical-timeline-element-title">{item.title}</h3>
+                        <h4 className="vertical-timeline-element-subtitle"></h4>
+                        <p >
+                            {this.getShortStr(item.content)}...
+                        </p>
+                    </div>
+                </VerticalTimelineElement>
+                ))}
+
             <VerticalTimelineElement
                 className="vertical-timeline-element--work"
                 date="2010 - 2011"
