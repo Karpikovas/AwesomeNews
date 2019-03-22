@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\Parser::index
+rss:
+    path: /RSS
+    controller: App\Controller\RSS:index
