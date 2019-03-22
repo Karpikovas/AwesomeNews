@@ -10,7 +10,20 @@ import VerticalTimelineElement from './VerticalTimelineElement';
 import './VerticalTimeline.css';
 import './VerticalTimelineElement.css';
 import Chip from "./Header";
+/*
+let Parser = require('rss-parser');
+let parser = new Parser();
 
+(async () => {
+
+    let feed = await parser.parseURL("https://cors-anywhere.herokuapp.com/"+'https://news.yandex.ru/auto.rss');
+    console.log(feed.title);
+
+    feed.items.forEach(item => {
+        console.log(item.title + ':' + item.link)
+    });
+
+})();*/
 const styles = theme => ({
     content:{
         background: 'blue',
@@ -21,17 +34,25 @@ class Content extends  React.Component{
     state = {
         news: [],
         content:[]
-    }/*
-    componentWillMount() {
+    }
+    componentWillMount() {/*
+        fetch('http://localhost/awesomenewssiteever/public/Yandex.json')
+            .then((response) => {
+                console.log(response);
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });*/
         axios
-            .get('http://localhost/awesomenewssiteever/public/index.php/RSS')
+            .get('http://localhost/awesomenewssiteever/public/Yandex.json')
             .then(({ data }) => {
-                this.setState({
+                /*this.setState({
                     news: data
-                });
+                });*/
                 console.log(data);
             });
-    }*/
+    }/*
     componentWillMount() {{this.FetchDataFromRssFeed()}
     }
 
@@ -42,14 +63,14 @@ class Content extends  React.Component{
                 var myObj = JSON.parse(request.responseText);
 
                     this.setState({
-                        content: myObj
+                        content: myObj.item[0]
                     });
                 console.log(myObj);
             }
         }
-        request.open("GET", "https://cors-anywhere.herokuapp.com/"+'http://localhost/awesomenewssiteever/public/XMLRSS4pda.xml', true);
+        request.open("GET", "https://cors-anywhere.herokuapp.com/"+'https://news.yandex.ru/auto.rss', true);
         request.send();
-    }
+    }*/
     getShortStr = (content) => {
         var arrStr = content.split('.');
         /*
