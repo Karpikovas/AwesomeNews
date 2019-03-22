@@ -22,12 +22,12 @@ class RSS
         $contentYandex = file_get_contents($urlYandex);
         $content4pda = file_get_contents($url4pda);
 
-        $filename = "XMLRSSIXBT.xml";
-        $filenameY = "XMLRSSYandex.xml";
-        $filename4pda = "XMLRSS4pda.xml";
-        file_put_contents($filename, $contentIXBT);
-        file_put_contents($filenameY, $contentYandex);
-        file_put_contents($filename4pda, $content4pda);
+
+
+        $this->getRSS2JSON($urlIXBT, "IXBT");
+        $this->getRSS2JSON($url4pda, "4pda");
+        $this->getRSS2JSON($urlYandex, "Yandex");
+
 
         $itemsIXBT = new \SimpleXmlElement($contentIXBT);
         $itemsYandex = new \SimpleXMLElement($contentYandex);
@@ -82,58 +82,17 @@ class RSS
         }
         echo "</p>";
 
-
-
-        $response = new Response();
-        $response->setContent(json_encode($json['item'], JSON_UNESCAPED_UNICODE));
-
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-
-        $filename = 'somefileRSS.json';
-
-        file_put_contents($filename, $response);
-
-
-
-
         return new Response();
     }
 
-//    public function getRSS($url){
-//
-//        $content = file_get_contents($url);
-//
-//        $filename = "XML" .$url.".xml";
-//        file_put_contents($filename, $content);
-//
-//        $items = new \SimpleXmlElement($content);
-//
-//        echo "<p>";
-//        foreach ($items ->channel -> item as $item){
-//            echo "<li><a href='$item->link}' title='$item->title'>" .
-//                $item->title . "</a> - " . $item ->description . " - " . $item ->pubDate. " - ". $item->category."</li>";
-//
-//            $json['item'][] = array([
-//                "title" => $item->title,
-//                "link" => $item->link,
-//                "description" => $item->description,
-//                "date" => $item->pubDate,
-//                "category" => $item->category
-//            ]);
-//
-//
-//        }
-//        echo "</p>";
-//
-//        $response = new Response();
-//        $response->setContent(json_encode($json['item'], JSON_UNESCAPED_UNICODE));
-//
-//        $response->headers->set('Content-Type', 'application/json');
-//        $response->headers->set('Access-Control-Allow-Origin', '*');
-//
-//        $filename = 'somefileRSS.json';
-//
-//        file_put_contents($filename, $response);
-//    }
+    public function getRSS2JSON($url, $name){
+        $fileContents = file_get_contents($url);
+        $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+        $fileContents = trim(str_replace('"', "'", $fileContents));
+        $simpleXml = simplexml_load_string($fileContents);
+        $jsonfile = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+        $filename = "$name.json";
+        file_put_contents($filename, $jsonfile);
+
+    }
 }

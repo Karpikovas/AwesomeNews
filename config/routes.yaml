@@ -3,4 +3,8 @@ index:
     controller: App\Controller\Parser::index
 rss:
     path: /RSS
-    controller: App\Controller\RSS:index
+    controller: App\Controller\RSS::index
+
+rss2json:
+    path: /RSS2
+    controller: App\Controller\RSS2JSON::index

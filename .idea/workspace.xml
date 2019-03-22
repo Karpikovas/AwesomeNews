@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4211fa0-19b1-4db9-98a9-6dd4ce5481f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+    <list default="true" id="c8cfa6b5-834f-411d-94c7-f50f2db3b5ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/IXBT.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/RSS2JSON.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/RSS2JSON.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/XMLRSS4pda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/XMLRSS4pda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/XMLRSSYandex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/XMLRSSYandex.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/somefile.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/somefile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/somefileRSS.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/somefileRSS.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/XMLRSS4pda.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/XMLRSSIXBT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/XMLRSSYandex.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/somefile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/somefileRSS.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RSS.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RSS.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
     <leaf>
@@ -53,15 +52,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/somefileRSS.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/Components/Content.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -74,31 +64,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/XMLRSSYandex.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/public/RSS2JSON.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="449" lean-forward="true" selection-start-column="449" selection-end-column="449" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/IXBT.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>work</find>
-      <find>vertical</find>
-      <find>elemen</find>
-      <find>transpa</find>
-      <find>solid</find>
-      <find>SimpleXMLElement</find>
-    </findStrings>
-    <dirStrings>
-      <dir>C:\OSPanel\domains\AwesomeNewsSite.local\ANS</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -108,43 +91,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/var/cache/dev/ContainerEsQ0Yx2/getDefaultControllerService.php" />
-        <option value="$PROJECT_DIR$/config/services.yaml" />
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/frontend/src/Image/фон.svg" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/scroll.js" />
-        <option value="$PROJECT_DIR$/frontend/src/index.js" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/Header.js" />
-        <option value="$PROJECT_DIR$/frontend/src/App.css" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/Footer.js" />
-        <option value="$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/docs/main.css" />
-        <option value="$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/style.min.css" />
-        <option value="$PROJECT_DIR$/frontend/src/style.min.css" />
-        <option value="$PROJECT_DIR$/frontend/src/App.js" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/VerticalTimelineElement.css" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/VerticalTimeline.css" />
-        <option value="$PROJECT_DIR$/frontend/src/Image/back.svg" />
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/public/somefileRSS.json" />
-        <option value="$PROJECT_DIR$/src/Controller/Parser.php" />
-        <option value="$PROJECT_DIR$/public/XMLRSS4pda.xml" />
-        <option value="$PROJECT_DIR$/src/Controller/RSS.php" />
-        <option value="$PROJECT_DIR$/public/XMLRSSYandex.xml" />
-        <option value="$PROJECT_DIR$/frontend/src/Components/Content.js" />
-      </list>
-    </option>
-  </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
@@ -194,7 +141,7 @@
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1350" />
@@ -224,17 +171,6 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Test/Test" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\user\Desktop\Проектная\OSPanel\domains\localhost\awesomenewssiteever\frontend\src\Components" />
-      <recent name="C:\Users\user\Desktop\Проектная\OSPanel\domains\localhost\awesomenewssiteever\frontend\src" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -246,16 +182,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="Parser.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/Controller/Parser.php">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="PHP Script.Parser.php" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -320,14 +246,13 @@
       <option name="project" value="LOCAL" />
       <updated>1553264694944</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64747000" />
+    <option name="totallyTimeSpent" value="272000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -374,26 +299,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout-to-restore>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -418,226 +324,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Добавлена поддержка чтения RSS-ленты" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/css-selector/Parser/Parser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2185" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/css-selector/Parser/Reader.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/css-selector/XPath/XPathExpr.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/Image/фон.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-scrollbar/src/js/ScrollAreaWithoutCss.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-scrollbar/src/js/ScrollArea.jsx" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-scrollbar/src/js/Scrollbar.jsx" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/scroll.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/catalog.config.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/dist-es6/VerticalTimeline.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/coverage/lcov-report/VerticalTimeline.js.html" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/coverage/lcov-report/sorter.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/coverage/lcov-report/prettify.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/coverage/lcov-report/block-navigation.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/coverage/lcov-report/base.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/dist-es6/VerticalTimelineElement.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/dist-modules/VerticalTimeline.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/docs/build/static/catalog.5bde34b6.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/docs/main.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/style.min.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/dist-es6/index.js" />
-    <entry file="file://$PROJECT_DIR$/frontend/node_modules/react-vertical-timeline-component/style.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/Footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/style.min.css" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/VerticalTimelineElement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1138">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/VerticalTimeline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/VerticalTimelineElement.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="185" column="11" selection-start-line="185" selection-start-column="11" selection-end-line="185" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/logo.svg" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/Components/VerticalTimeline.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/Image/back.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/somefile.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-58" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/twig/twig/test/Twig/Tests/Extension/CoreTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="247" column="29" selection-start-line="247" selection-start-column="29" selection-end-line="247" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/XMLRSS.xml" />
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Parser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding>
-            <element signature="e#116#157#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#7#22#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/somefile.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RSS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/XMLRSS4pda.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="325" selection-start-line="1" selection-start-column="325" selection-end-line="1" selection-end-column="325" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/somefileRSS.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/XMLRSSIXBT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/XMLRSSYandex.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/Components/Content.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -645,6 +331,20 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/RSS2JSON.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="449" lean-forward="true" selection-start-column="449" selection-end-column="449" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/IXBT.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
         </state>
       </provider>
     </entry>
