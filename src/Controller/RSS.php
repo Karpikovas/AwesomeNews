@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RSS
 {
+    /**
+     * @return Response
+     */
     public function index(){
         $urlYandex = "http://news.yandex.ru/computers.rss";
         $urlIXBT = "https://www.ixbt.com/export/news.rss";
@@ -31,6 +34,7 @@ class RSS
         $fileContents = trim(str_replace('"', "'", $fileContents));
         $simpleXml = simplexml_load_string($fileContents);
         $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+
 
         $response->setContent($jsonfileIXBT);
 

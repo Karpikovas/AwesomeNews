@@ -19,6 +19,8 @@ class RSS2JSON
     $api_endpoint = 'https://api.rss2json.com/v1/api.json?rss_url=';
     $data = file_get_contents($api_endpoint . urlencode($rss_url));
 
+
+
     $filename = "RSS2JSON.json";
     file_put_contents($filename, $data);
 
