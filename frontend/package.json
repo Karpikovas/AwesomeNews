@@ -10,6 +10,7 @@
     "react-dom": "^16.8.3",
     "react-mdl": "^1.11.0",
     "react-scripts": "2.1.5",
+    "react-scroll-up-button": "^1.6.4",
     "react-scrollbar": "^0.5.4",
     "react-scrollbar-js": "^1.0.1",
     "react-vertical-timeline-component": "^2.3.1",
@@ -29,5 +30,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.26.0"
+  }
 }

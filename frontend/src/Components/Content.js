@@ -24,6 +24,7 @@ const styles = theme => ({
         transfrom: 'translate(-50%, -50%)',
     },
     fab:{
+        position:'relative',
       marginLeft:'auto',
       marginRight: 0
     }
