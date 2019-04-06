@@ -7,14 +7,18 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "clue/buzz-react": "^2.5",
+        "friendsofsymfony/user-bundle": "^2.1",
         "symfony/console": "4.2.*",
         "symfony/css-selector": "4.2.*",
         "symfony/dom-crawler": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.2.*",
-        "symfony/yaml": "4.2.*",
-
+        "symfony/orm-pack": "^1.0",
+        "symfony/swiftmailer-bundle": "^3.2",
+        "symfony/templating": "4.2.*",
+        "symfony/translation": "4.2.*",
+        "symfony/yaml": "4.2.*"
     },
     "config": {
         "preferred-install": {
