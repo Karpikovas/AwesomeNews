@@ -7,11 +7,11 @@ import Fab from '@material-ui/core/Fab';
 import StarIcon from '@material-ui/icons/Star';
 import axios from 'axios';
 import VerticalTimelineElement from './VerticalTimelineElement';
-import './VerticalTimeline.css';
-import './VerticalTimelineElement.css';
+import '../CSS/VerticalTimeline.css';
+import '../CSS/VerticalTimelineElement.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import NavigationIcon from '@material-ui/icons/Navigation';
-
+import data from '../4pda';
 
 const styles = theme => ({
     content:{
@@ -36,6 +36,7 @@ class Content extends  React.Component{
         isLoad: false
     }
     componentWillMount() {
+        /*
         axios.get('http://localhost/awesomenewssiteever/public/', {
             crossDomain: true
         }).then(res => {
@@ -47,7 +48,13 @@ class Content extends  React.Component{
         }).catch(error => {
             console.log('error', error);
         })
+        */
 
+        this.setState({
+            news: data
+        });
+        console.log(data.channel.item);
+        this.setState({isLoad: true});
     }
     /*
     componentWillMount() {{this.FetchDataFromRssFeed()}
@@ -86,28 +93,24 @@ class Content extends  React.Component{
             {
                 this.state.isLoad ?
                 <VerticalTimeline>
-                    {this.state.news.map((item) =>(
+                    {this.state.news.channel.item.map((item) =>(
                         <VerticalTimelineElement
                         className="vertical-timeline-element--work"
                         date={this.getDate(item.pubDate)}
                         iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
                         icon={<WorkIcon />}
                         >
-                        <h3 className="vertical-timeline-element-title">{item.title}</h3>
+                        <h3 className="vertical-timeline-element-title">{item.title.toString()}</h3>
                         <h4 className="vertical-timeline-element-subtitle"></h4>
                         <p>
                             Автор: {item.author}
                         </p>
-                            <Fab variant="extended" aria-label="Delete" className={classes.fab} href={item.guid}>
+                            <Fab variant="extended" aria-label="Delete" className={classes.fab} href={item.guid.toString()}>
                                 <NavigationIcon/>
                                 Читать в источнике
                             </Fab>
                         </VerticalTimelineElement>
                     ))}
-                    <VerticalTimelineElement
-                        iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-                        icon={<StarIcon />}
-                    />
                 </VerticalTimeline>
                     :
                     <CircularProgress  className={classes.loadicon} color="secondary" size={90}/>

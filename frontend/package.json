@@ -9,6 +9,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-mdl": "^1.11.0",
+    "react-redux": "^7.0.1",
     "react-scripts": "2.1.5",
     "react-scroll-up-button": "^1.6.4",
     "react-scrollbar": "^0.5.4",

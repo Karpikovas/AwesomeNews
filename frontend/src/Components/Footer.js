@@ -2,14 +2,37 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import ScrollUpButton from "react-scroll-up-button";
 import Toolbar from '@material-ui/core/Toolbar';
 import Fab from '@material-ui/core/Fab';
-import StarIcon from '@material-ui/icons/Star';
 import back from "../Image/back.svg";
 import UpIcon from '@material-ui/icons/KeyboardArrowUp';
 
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '@material-ui/icons/Restore';
+
+import PoliticIcon from '@material-ui/icons/AccountBalance'
+import WorldIcon from '@material-ui/icons/Public'
+import CultureIcon from '@material-ui/icons/ColorLens'
+import ScienceIcon from '@material-ui/icons/School'
+import SocialIcon from '@material-ui/icons/Group'
+
 const styles = theme => ({
+    root: {
+        width: 500,
+        background:'transparent',
+        display: 'block',
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        paddingBottom: theme.spacing.unit * 2,
+        color: 'white'
+    },
+    root1: {
+        width: '100vh',
+        background:'transparent',
+        display: 'inline-block',
+        paddingBottom: theme.spacing.unit * 2,
+    },
     text: {
         paddingTop: theme.spacing.unit * 2,
         paddingLeft: theme.spacing.unit * 2,
@@ -29,7 +52,7 @@ const styles = theme => ({
         background:'transparent',
     },
     toolbar: {
-        minHeight: 92,
+        minHeight: 73,
         alignItems: 'center',
         justifyContent: 'space-between',
     },
@@ -50,9 +73,14 @@ const styles = theme => ({
 
 class Footer extends  React.Component{
     state = {
-        intervalId: 0
+        intervalId: 0,
+        value: 'recents'
+
     }
 
+    handleChange = (event, value) => {
+        this.setState({ value });
+    };
     scrollStep() {
         if (window.pageYOffset === 0) {
             clearInterval(this.state.intervalId);
@@ -66,6 +94,7 @@ class Footer extends  React.Component{
     }
     render(){
         const { classes } = this.props;
+        const { value } = this.state;
         return (
         <AppBar position="fixed" color="primary" className={classes.appBar} >
             <Toolbar className={classes.toolbar}>
@@ -73,6 +102,14 @@ class Footer extends  React.Component{
                     <Fab color="secondary" aria-label="Add" className={classes.fabButton} onClick={ () => { this.scrollToTop(); }}>
                         <UpIcon />
                     </Fab>
+                <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+                    <BottomNavigationAction label="Последние" value="Последние" icon={<RestoreIcon />} style={{color: '#b0b5b5'}} />
+                    <BottomNavigationAction label="Мир" value="Мир" icon={<WorldIcon />} style={{color:'#b0b5b5'}}/>
+                    <BottomNavigationAction label="Политика" value="Политика" icon={<PoliticIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Общество" value="Общество" icon={<SocialIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Наука" value="Наука" icon={<ScienceIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Культура" value="Культура" icon={<CultureIcon />} style={{color:'#b0b5b5'}} />
+                </BottomNavigation>
 
             </Toolbar>
         </AppBar>

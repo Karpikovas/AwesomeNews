@@ -5,8 +5,11 @@ import Header from './Components/Header';
 import Content from './Components/Content';
 import Footer from './Components/Footer';
 import './App.css';
+import AuthForm from './Components/AuthForm'
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
+
 });
 class App extends React.Component {
     render() {
@@ -14,14 +17,8 @@ class App extends React.Component {
 
         return (
             <div style={{width:'100 vw'}}>
-                <Header/>
-                <Content>
 
-                <a href="/"
-                   className="Tag Tag--electricVoilet">Design &amp; Illustration</a>
-
-
-                </Content>
+                <AuthForm/>
                 <Footer/>
             </div>
         );
