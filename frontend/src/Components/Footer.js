@@ -50,6 +50,7 @@ const styles = theme => ({
         backgroundHeight: '100 vh',
         backgroundWidth: '100vh',
         background:'transparent',
+        display:'fixed'
     },
     toolbar: {
         minHeight: 73,
