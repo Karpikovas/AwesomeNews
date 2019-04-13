@@ -1,0 +1,24 @@
+#nelmio_api_doc: ~
+#
+#fos_rest:
+#    routing_loader:
+#        default_format: json                            # Все ответы должны быть в JSON
+#        include_format: false                           # Мы не нуждаемся в передаче формата
+#                                                        # Этого достаточно что бы все ответы были в JSON
+#
+#fos_user:
+#    db_driver: orm
+#    firewall_name: api
+#    user_class: App\Entity\User
+#    from_email:
+#      address: "cracksasha@yandex.ru"
+#      sender_name: "Alex Korotkii"
+#
+#fos_oauth_server:
+#    db_driver:           orm
+#    client_class:        App\Entity\Client
+#    access_token_class:  App\Entity\AccessToken
+#    refresh_token_class: App\Entity\RefreshToken
+#    auth_code_class:     App\Entity\AuthCode
+#    service:
+#        user_provider: fos_user.user_manager             # Тут мы указываем кто будет отвечать за генерацию Access Token'а

@@ -23,6 +23,12 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+
+    }
+
+    public function getProjectDir(): string
+    {
+        return \dirname(__DIR__);
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
