@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -20,12 +21,24 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
-import classNames from 'classnames';
+import Grid from '@material-ui/core/Grid'
+import { connect } from 'react-redux';
+import * as actions from '../store/actions/auth';
 
 const styles = theme => ({
     root: {
         display: 'flex',
 
+    },
+    paper:{
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        paddingRight: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing.unit * 2,
+        borderRadius: '0.25em',
+        border: '4px dashed blue',
+        padding: '1em',
     },
     largeIcon: {
         width: 100,
@@ -39,7 +52,8 @@ const styles = theme => ({
  class FormDialog extends React.Component {
     state = {
         openAuth: false,
-        openReg: false
+        openReg: false,
+        email: ''
     };
 
     handleClickOpen = () => {
@@ -49,6 +63,14 @@ const styles = theme => ({
     handleClose = () => {
         this.setState({ openAuth: false, openReg: false });
     };
+
+     handleEntryAndClose = () => {
+         this.setState({ openAuth: false, openReg: false });
+         this.props.onAuth(this.state.email, this.state.password);
+ }
+     handleOnChange = event => {
+         this.setState({email: event.target.value});
+     };
      handleReg = () => {
          this.setState({ openAuth: false, openReg: true });
      };
@@ -63,21 +85,38 @@ const styles = theme => ({
          this.setState(state => ({ showPassword: !state.showPassword }));
      };
 
+
     render() {
         const { classes, theme } = this.props;
         return (
             <div style={{textAlign:'center'}}>
-                <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'30vh',marginTop: 20}} />
-                <Typography  variant="h2" gutterBottom  style={{fontFamily: '"Black Ops One", cursive', color:'#3977e3'}}>
-                    A W E S O M E - N E W S
-                </Typography>
-                <Typography component="h2" variant="h4" gutterBottom color='primary'>
-                    Новостная лента в новом формате
-                </Typography>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen} size='large' style={{marginTop:20}}>
-                    <NavigationIcon className={classes.extendedIcon} />
-                    Начать
-                </Button>
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '100vh' }}
+                >
+
+                    <Grid item xs={8}>
+                        <Paper className={classes.paper} elevation={24}>
+                            <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'30vh',marginTop: 20}} />
+                            <Typography  variant="h2" gutterBottom  style={{fontFamily: '"Black Ops One", cursive', color:'#3977e3'}}>
+                                A W E S O M E - N E W S
+                            </Typography>
+                            <Typography component="h2" variant="h4" gutterBottom color='primary'>
+                                Новостная лента в новом формате
+                            </Typography>
+                            <Button variant="outlined" color="primary" onClick={this.handleClickOpen} size='large' style={{marginTop:20}}>
+
+                                Начать
+                            </Button>
+                        </Paper>
+                    </Grid>
+
+                </Grid>
+
                 <Dialog
                     open={this.state.openAuth}
                     onClose={this.handleClose}
@@ -98,6 +137,7 @@ const styles = theme => ({
                         <DialogContentText>
                             Для входа на сайт, пожалуйста, введите свой адрес электронной почты и пароль,
                             используемый для доступа к учетной записи AwesomeNews.
+
                         </DialogContentText>
                         <TextField
                             autoFocus
@@ -105,7 +145,9 @@ const styles = theme => ({
                             id="email"
                             label="Email"
                             type="email"
+                            ref="email"
                             fullWidth
+                            onChange={this.handleOnChange}
                         />
                         <FormControl >
                             <InputLabel htmlFor="adornment-password">Пароль</InputLabel>
@@ -128,16 +170,15 @@ const styles = theme => ({
                         </FormControl>
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="outlined" color="secondary" onClick={this.handleReg} >
-
-
-                            <IconAddPerson/>
+                        <Button variant="outlined" onClick={this.handleEntryAndClose} color="primary" htmlType="submit">
+                            Вход
                         </Button>
                         <Button onClick={this.handleClose} color="primary">
                             Отмена
                         </Button>
-                        <Button onClick={this.handleClose} color="primary">
-                            Вход
+
+                        <Button color="secondary" onClick={this.handleReg} >
+                            <IconAddPerson/>
                         </Button>
 
                     </DialogActions>
@@ -210,15 +251,17 @@ const styles = theme => ({
                         </FormControl>
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="outlined" color="primary" onClick={this.handleAuth} >
-                            <IconPerson/>
+                        <Button variant="outlined" onClick={this.handleClose} color="secondary">
+                            Регистрация
                         </Button>
                         <Button onClick={this.handleClose} color="secondary">
                             Отмена
                         </Button>
-                        <Button onClick={this.handleClose} color="secondary">
-                            Регистрация
+                        <Button  color="primary" onClick={this.handleAuth} >
+                            <IconPerson/>
                         </Button>
+
+
 
                     </DialogActions>
                 </Dialog>
@@ -229,4 +272,15 @@ const styles = theme => ({
 FormDialog.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles, { withTheme: true })(FormDialog);
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.isLoading,
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return {
+        onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(FormDialog));

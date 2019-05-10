@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import * as actions from "../store/actions/auth";
+import connect from "react-redux/es/connect/connect";
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -17,6 +19,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import LogoutIcon from "@material-ui/icons/ExitToApp"
 
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -103,6 +106,9 @@ class Header extends React.Component {
                         <div className={classes.drawerHeader}>
                             <IconButton onClick={this.handleDrawerClose} style={{backgroundColor: '#2196f3'}}>
                                 {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            </IconButton >
+                            <IconButton style={{color:'#b0b5b5', fontSize: 40, marginRight: 20, marginLeft:'auto'}}>
+                                <LogoutIcon style={{color:'#b0b5b5', fontSize: 40}} onClick={this.props.logout}/>
                             </IconButton>
                         </div>
                         <Divider variant="middle" style={{backgroundColor:"#4a4d4f"}}/>
@@ -152,4 +158,9 @@ Header.propTypes = {
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Header);
+const mapDispatchToProps = dispatch =>{
+    return {
+        logout: () => dispatch(actions.logout())
+    }
+}
+export default connect(null, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Header));

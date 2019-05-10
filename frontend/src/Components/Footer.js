@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Fab from '@material-ui/core/Fab';
 import back from "../Image/back.svg";
-import UpIcon from '@material-ui/icons/KeyboardArrowUp';
+import UpIcon from '@material-ui/icons/ArrowUpward';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -75,7 +75,7 @@ const styles = theme => ({
 class Footer extends  React.Component{
     state = {
         intervalId: 0,
-        value: 'recents'
+        value: 'Последние'
 
     }
 

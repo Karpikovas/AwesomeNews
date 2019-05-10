@@ -8,13 +8,18 @@
     "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-infinite-scroller": "^1.2.4",
     "react-mdl": "^1.11.0",
     "react-redux": "^7.0.1",
     "react-scripts": "2.1.5",
     "react-scroll-up-button": "^1.6.4",
+    "react-scrolla": "^0.3.1",
     "react-scrollbar": "^0.5.4",
     "react-scrollbar-js": "^1.0.1",
     "react-vertical-timeline-component": "^2.3.1",
+    "redux": "^4.0.1",
+    "redux-devtools": "^3.5.0",
+    "redux-thunk": "^2.3.0",
     "rss-parser": "^3.7.0"
   },
   "scripts": {
@@ -33,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.26.0"
+    "@symfony/webpack-encore": "^0.26.0",
+    "react-infinite-loading": "^1.0.0"
   }
 }
