@@ -41,9 +41,9 @@ class RSS
 
 
 
-        $this->getRSS2JSON($urlIXBT, "IXBT");
-        $this->getRSS2JSON($url4pda, "4pda");
-        $this->getRSS2JSON($urlYandex, "Yandex");
+//        $this->getRSS2JSON($urlIXBT, "IXBT");
+//        $this->getRSS2JSON($url4pda, "4pda");
+//        $this->getRSS2JSON($urlYandex, "Yandex");
 
 
 //
