@@ -83,8 +83,6 @@ class Content extends  React.Component{
     }
     getMoreNews = () => {
         this.props.getNews();
-        console.log(cnt);
-        console.log(this.props.news);
         //cnt++;
         this.setState({isLoad: true});
         setTimeout(() => {
@@ -93,8 +91,9 @@ class Content extends  React.Component{
     }
     componentDidMount(){
         this.props.getNews();
-        console.log(cnt);
+        //console.log(this.props.token);
     }
+
 
     render(){
         const { classes } = this.props;
@@ -109,6 +108,7 @@ class Content extends  React.Component{
                     handleLoading={this.getMoreNews} loading={this.state.isLoad}
                     elementScroll={false}
                 >
+
                         <VerticalTimeline >
 
                             {
@@ -150,12 +150,14 @@ class Content extends  React.Component{
 
 
 
-
             }
+
             </div>
     );
     }
 }
+
+//4779ab0a6a4d40a292791c01f483dd0a
 
 Content.propTypes = {
     classes: PropTypes.object.isRequired,
@@ -165,7 +167,8 @@ const mapStateToProps = (state) => {
     return {
         isLoading: state.isLoading,
         hasErrored: state.hasErrored,
-        news: state.news
+        news: state.news,
+        token: state.token
     }
 }
 

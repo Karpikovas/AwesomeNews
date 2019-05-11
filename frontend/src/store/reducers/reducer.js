@@ -22,10 +22,12 @@ const newsHasErrored = (state, action) => {
 };
 
 const newsGetDataSuccess = (state, action) => {
+
     return {
         isLoading: false,
         news: state.news.concat(action.news)
         //news: action.news
+        //news: [...state.news, action.news]
     }
 }
 
@@ -61,8 +63,8 @@ const reducer = (state=initialState, action) => {
         case actionTypes.NEWS_IS_LOADING: return newsIsLoading(state, action);
         case actionTypes.NEWS_HAS_ERRORED: return newsHasErrored(state, action);
         case actionTypes.NEWS_GET_DATA_SUCCESS: return newsGetDataSuccess(state, action);
-
         case actionTypes.AUTH_START: return authStart(state, action);
+        case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
 

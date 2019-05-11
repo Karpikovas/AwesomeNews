@@ -41,17 +41,28 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
     return dispatch =>{
         dispatch(authStart());
-        console.log(username);
-        console.log(password);
-        if (username === 'user' && password === 'useruser')
-        {
-            const token = '111';
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }
+        };
+        axios.post("https://cors-anywhere.herokuapp.com/"+ 'http://84.201.147.3:8080/index.php/api/auth/login',{
+            username: username,
+            password: password
+        }, axiosConfig).then(res => {
+            const token = res.data.token;
+            console.log(token);
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
             localStorage.setItem('token', token);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
-        }
+        })
+            .catch(err => {
+                console.log(err);
+                dispatch(authFail(err));
+            })
     }
 };
 /*
@@ -81,6 +92,7 @@ export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.getItem('token');
         if (token === undefined){
+            console.log("UNDEF");
             dispatch(logout());
         } else {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
