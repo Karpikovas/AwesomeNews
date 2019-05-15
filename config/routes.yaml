@@ -1,5 +1,5 @@
 RSS:
-    path: /api/RSS
+    path: /api/RSS/
     controller: App\Controller\Api\RSS::index
 
 fos_oauth_server_token:

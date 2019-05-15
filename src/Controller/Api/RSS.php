@@ -8,98 +8,85 @@
 
 namespace App\Controller\Api;
 
-
-use FOS\RestBundle\Controller\FOSRestController;
-
+use App\Entity\News;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class RSS
+class RSS extends AbstractController
 {
     /**
      * @return Response
      */
+
+
     public function index(){
+
+        $host = '84.201.147.3';  // Хост,
+        $user = 'phpuser';    // Имя созданного вами пользователя
+        $pass = 'phpAdmin1999'; // Установленный вами пароль пользователю
+        $db_name = 'users';   // Имя базы данных
+        $link = mysqli_connect($host, $user, $pass, $db_name); // Соединяемся с базой
+
+        // Ругаемся, если соединение установить не удалось
+        if (!$link) {
+            print_r('Не могу соединиться с БД. Код ошибки: ' . mysqli_connect_errno() . ', ошибка: ' . mysqli_connect_error());
+            exit;
+        }
+
+
         $urlYandex = "http://news.yandex.ru/computers.rss";
         $urlIXBT = "https://www.ixbt.com/export/news.rss";
         $url4pda = "http://4pda.ru/feed/";
-        $contentIXBT = file_get_contents($urlIXBT);
-        $contentYandex = file_get_contents($urlYandex);
-        $content4pda = file_get_contents($url4pda);
+
 
         $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Content-Type', 'application/json', 'charset=utf-8');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $fileContents = file_get_contents($urlIXBT);
+        $fileContents = file_get_contents($urlYandex);
         $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
         $fileContents = trim(str_replace('"', "'", $fileContents));
         $simpleXml = simplexml_load_string($fileContents);
-        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+//        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+
+        foreach ($simpleXml ->channel -> item as $item){
+
+            $json = array(
+                "title" => $item->title,
+                "link" => $item->link,
+                "guid" => $item->guid,
+                "description" => $item->description,
+                "date" => $item->pubDate,
+
+            );
+            $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+
+            $em = $this->getDoctrine()->getManager();
+
+            $news = new News();
+
+            $news->setTitle($item->title);
+            $news->setLink($item->link);
+            $news->setGuid($item->guid);
+            $news->setDescription($item->description);
+            $news->setDate($item->pubDate);
+            $news->setNewsJSON($jsonEncode);
+            $em->persist($news);
+
+            $em->flush();
+            $json = array();
+       }
+        mysqli_set_charset( $link, 'utf8');
+        $sql = mysqli_query($link, 'SELECT news_json FROM news');
+        while($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+            $resultAll['item'][] = $result['news_json'];
+        }
 
 
-        $response->setContent($jsonfileIXBT);
+
+        $response->setContent('['.implode(',', $resultAll['item']).']');
 
 
-
-//        $this->getRSS2JSON($urlIXBT, "IXBT");
-//        $this->getRSS2JSON($url4pda, "4pda");
-//        $this->getRSS2JSON($urlYandex, "Yandex");
-
-
-//
-//        $itemsIXBT = new \SimpleXmlElement($contentIXBT);
-//        $itemsYandex = new \SimpleXMLElement($contentYandex);
-//        $items4pda = new \SimpleXMLElement($content4pda);
-
-
-//        echo "<p>";
-//        foreach($items4pda -> channel -> item as $item) {
-//            echo "<li><a href = '$item->link}' title = '$item->title'>" .
-//                $item->title . "</a> - " . $item->description . " - " . $item->pubDate . " - " . $item->category . "</li>";
-//
-//            $json['item'][] = array([
-//                "title" => $item->title,
-//                "link" => $item->link,
-//                "description" => $item->description,
-//                "date" => $item->pubDate,
-//                "category" => $item->category
-//            ]);
-//        }
-//        echo "</p>";
-//
-//        echo "<p>";
-//        foreach($itemsIXBT -> channel -> item as $item) {
-//            echo "<li><a href = '$item->link}' title = '$item->title'>" .
-//                $item->title . "</a> - " . $item->description . " - " . $item->pubDate . " - " . $item->category . "</li>";
-//
-//            $json['item'][] = array([
-//                "title" => $item->title,
-//                "link" => $item->link,
-//                "description" => $item->description,
-//                "date" => $item->pubDate,
-//                "category" => $item->category
-//            ]);
-//        }
-//        echo "</p>";
-//
-//
-//        echo "<p>";
-//        foreach ($itemsYandex ->channel -> item as $item){
-//            echo "<li><a href='$item->link}' title='$item->title'>" .
-//                $item->title . "</a> - " . $item ->description . " - " . $item ->pubDate. " - ". $item->category."</li>";
-//
-//            $json['item'][] = array([
-//                "title" => $item->title,
-//                "link" => $item->link,
-//                "description" => $item->description,
-//                "date" => $item->pubDate,
-//                "category" => $item->category
-//            ]);
-//
-//
-//        }
-//        echo "</p>";
-//
         return $response;
     }
 
