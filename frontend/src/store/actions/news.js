@@ -22,7 +22,7 @@ export function newsGetDataSuccess(news) {
         news
     };
 }
-
+/*
 export function newsGetData() {
     return (dispatch) => {
         dispatch(authCheckState());
@@ -36,7 +36,7 @@ export function newsGetData() {
         };
         axios.get("https://cors-anywhere.herokuapp.com/"+ 'http://84.201.147.3:8080/index.php/api/RSS ', axiosConfig)
             .then((res) => {
-                //console.log(res.data.channel.item);
+                console.log(res.data.channel.item);
                 localStorage.setItem('news', res.data.channel.item);
                 return res;
         })
@@ -52,8 +52,8 @@ export function newsGetData() {
     };
 
 }
+*/
 
-/*
 export function newsGetData() {
     return (dispatch) => {
         dispatch(newsIsLoading(true));
@@ -77,4 +77,4 @@ export function newsGetData() {
             })
     };
 
-}*/
+}
