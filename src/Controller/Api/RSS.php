@@ -78,6 +78,15 @@ class RSS extends AbstractController
 
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_it where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_it (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
 
 //                $jsonEncode = mysqli_real_escape_string($link, $jsonEncode);
 //                $sql = mysqli_query($link, 'INSERT into News (New_ID, New, Title, Link, Guild, DescriptonNews, PubDate) values ('.$i.' ,'.$jsonEncode.', '.$item->title.', '.$item->link.', '.$item->guid.', '.$item->description.', '.$item->pubDate.')');
@@ -134,6 +143,15 @@ class RSS extends AbstractController
 
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_world where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_world (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
 
 //                $em = $this->getDoctrine()->getManager();
 //
@@ -180,6 +198,15 @@ class RSS extends AbstractController
 
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_society where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_society (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
 
 //                $em = $this->getDoctrine()->getManager();
 //
