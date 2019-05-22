@@ -26,9 +26,9 @@ class RSS extends AbstractController
 
     public function index(Request $request){
 
-        $host = '84.201.147.3';  // Хост,
-        $user = 'phpuser';    // Имя созданного вами пользователя
-        $pass = 'phpAdmin1999'; // Установленный вами пароль пользователю
+        $host = '84.201.150.49';  // Хост,
+        $user = 'awesome';    // Имя созданного вами пользователя
+        $pass = 'awesome1999'; // Установленный вами пароль пользователю
         $db_name = 'users';   // Имя базы данных
         $link = mysqli_connect($host, $user, $pass, $db_name); // Соединяемся с базой
 
