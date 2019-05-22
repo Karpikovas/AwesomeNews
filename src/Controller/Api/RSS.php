@@ -231,6 +231,221 @@ class RSS extends AbstractController
 
 
             $response->setContent('[' . implode(',', $resultAll['item']) . ']');
+        }elseif ($category == 'sport'){
+            $urlYandexSport = "https://news.yandex.ru/sport.rss";
+
+            $fileContents = file_get_contents($urlYandexSport);
+            $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+            $fileContents = trim(str_replace('"', "'", $fileContents));
+            $simpleXml = simplexml_load_string($fileContents);
+////        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+//
+            foreach ($simpleXml->channel->item as $item) {
+
+                $json = array(
+                    "title" => $item->title,
+                    "link" => $item->link,
+                    "guid" => $item->guid,
+                    "description" => $item->description,
+                    "date" => $item->pubDate,
+
+                );
+                $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_sport where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_sport (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
+
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $news = new NewsSociety();
+//
+//                $news->setTitle($item->title);
+//                $news->setLink($item->link);
+//                $news->setGuid($item->guid);
+//                $news->setDescription($item->description);
+//                $news->setDate($item->pubDate);
+//                $news->setNewsJSON($jsonEncode);
+//                $em->persist($news);
+//
+//                $em->flush();
+//                $json = array();
+            }
+            mysqli_set_charset($link, 'utf8');
+            $sql = mysqli_query($link, "Select news_json from news_sport  where date between '$dOld' and '$dNew' order by date desc ");
+            while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+                $resultAll['item'][] = $result['news_json'];
+            }
+
+
+            $response->setContent('[' . implode(',', $resultAll['item']) . ']');
+
+        }elseif ($category == 'music'){
+            $urlYandexMusic = "https://news.yandex.ru/music.rss";
+
+            $fileContents = file_get_contents($urlYandexMusic);
+            $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+            $fileContents = trim(str_replace('"', "'", $fileContents));
+            $simpleXml = simplexml_load_string($fileContents);
+////        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+//
+            foreach ($simpleXml->channel->item as $item) {
+
+                $json = array(
+                    "title" => $item->title,
+                    "link" => $item->link,
+                    "guid" => $item->guid,
+                    "description" => $item->description,
+                    "date" => $item->pubDate,
+
+                );
+                $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_music where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_music (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
+
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $news = new NewsSociety();
+//
+//                $news->setTitle($item->title);
+//                $news->setLink($item->link);
+//                $news->setGuid($item->guid);
+//                $news->setDescription($item->description);
+//                $news->setDate($item->pubDate);
+//                $news->setNewsJSON($jsonEncode);
+//                $em->persist($news);
+//
+//                $em->flush();
+//                $json = array();
+            }
+            mysqli_set_charset($link, 'utf8');
+            $sql = mysqli_query($link, "Select news_json from news_music  where date between '$dOld' and '$dNew' order by date desc ");
+            while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+                $resultAll['item'][] = $result['news_json'];
+            }
+
+
+            $response->setContent('[' . implode(',', $resultAll['item']) . ']');
+
+        }elseif ($category == 'auto'){
+            $urlYandexAuto = "https://news.yandex.ru/auto.rss";
+
+            $fileContents = file_get_contents($urlYandexAuto);
+            $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+            $fileContents = trim(str_replace('"', "'", $fileContents));
+            $simpleXml = simplexml_load_string($fileContents);
+////        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+//
+            foreach ($simpleXml->channel->item as $item) {
+
+                $json = array(
+                    "title" => $item->title,
+                    "link" => $item->link,
+                    "guid" => $item->guid,
+                    "description" => $item->description,
+                    "date" => $item->pubDate,
+
+                );
+                $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_auto where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_auto (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
+
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $news = new NewsSociety();
+//
+//                $news->setTitle($item->title);
+//                $news->setLink($item->link);
+//                $news->setGuid($item->guid);
+//                $news->setDescription($item->description);
+//                $news->setDate($item->pubDate);
+//                $news->setNewsJSON($jsonEncode);
+//                $em->persist($news);
+//
+//                $em->flush();
+//                $json = array();
+            }
+            mysqli_set_charset($link, 'utf8');
+            $sql = mysqli_query($link, "Select news_json from news_auto  where date between '$dOld' and '$dNew' order by date desc ");
+            while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+                $resultAll['item'][] = $result['news_json'];
+            }
+
+
+            $response->setContent('[' . implode(',', $resultAll['item']) . ']');
+
+        }elseif ($category == 'politics'){
+            $urlYandexPolitics = "https://news.yandex.ru/politics.rss";
+
+            $fileContents = file_get_contents($urlYandexPolitics);
+            $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+            $fileContents = trim(str_replace('"', "'", $fileContents));
+            $simpleXml = simplexml_load_string($fileContents);
+////        $jsonfileIXBT = json_encode($simpleXml, JSON_UNESCAPED_UNICODE);
+//
+            foreach ($simpleXml->channel->item as $item) {
+
+                $json = array(
+                    "title" => $item->title,
+                    "link" => $item->link,
+                    "guid" => $item->guid,
+                    "description" => $item->description,
+                    "date" => $item->pubDate,
+
+                );
+                $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
+                mysqli_set_charset($link, 'utf8');
+                $sql = mysqli_query($link, "select title from news_politics where title = '$item->title'");
+                $result = mysqli_fetch_assoc($sql);
+                if (!$result){
+                    $sql = mysqli_query($link, "INSERT into news_politics (title, link, guid, description, date, news_json)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                }else{
+                    continue;
+                }
+
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $news = new NewsSociety();
+//
+//                $news->setTitle($item->title);
+//                $news->setLink($item->link);
+//                $news->setGuid($item->guid);
+//                $news->setDescription($item->description);
+//                $news->setDate($item->pubDate);
+//                $news->setNewsJSON($jsonEncode);
+//                $em->persist($news);
+//
+//                $em->flush();
+//                $json = array();
+            }
+            mysqli_set_charset($link, 'utf8');
+            $sql = mysqli_query($link, "Select news_json from news_politics  where date between '$dOld' and '$dNew' order by date desc ");
+            while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+                $resultAll['item'][] = $result['news_json'];
+            }
+
+
+            $response->setContent('[' . implode(',', $resultAll['item']) . ']');
         }
         else{
             $json = array(
