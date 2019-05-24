@@ -103,15 +103,6 @@ class Footer extends  React.Component{
                     <Fab color="secondary" aria-label="Add" className={classes.fabButton} onClick={ () => { this.scrollToTop(); }}>
                         <UpIcon />
                     </Fab>
-                <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-                    <BottomNavigationAction label="Последние" value="Последние" icon={<RestoreIcon />} style={{color: '#b0b5b5'}} />
-                    <BottomNavigationAction label="Мир" value="Мир" icon={<WorldIcon />} style={{color:'#b0b5b5'}}/>
-                    <BottomNavigationAction label="Политика" value="Политика" icon={<PoliticIcon />} style={{color:'#b0b5b5'}} />
-                    <BottomNavigationAction label="Общество" value="Общество" icon={<SocialIcon />} style={{color:'#b0b5b5'}} />
-                    <BottomNavigationAction label="Наука" value="Наука" icon={<ScienceIcon />} style={{color:'#b0b5b5'}} />
-                    <BottomNavigationAction label="Культура" value="Культура" icon={<CultureIcon />} style={{color:'#b0b5b5'}} />
-                </BottomNavigation>
-
             </Toolbar>
         </AppBar>
     );
@@ -124,3 +115,14 @@ Footer.propTypes = {
 };
 
 export default withStyles(styles)(Footer);
+
+/*
+*                 <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+                    <BottomNavigationAction label="Последние" value="Последние" icon={<RestoreIcon />} style={{color: '#b0b5b5'}} />
+                    <BottomNavigationAction label="Мир" value="Мир" icon={<WorldIcon />} style={{color:'#b0b5b5'}}/>
+                    <BottomNavigationAction label="Политика" value="Политика" icon={<PoliticIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Общество" value="Общество" icon={<SocialIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Наука" value="Наука" icon={<ScienceIcon />} style={{color:'#b0b5b5'}} />
+                    <BottomNavigationAction label="Культура" value="Культура" icon={<CultureIcon />} style={{color:'#b0b5b5'}} />
+                </BottomNavigation>
+                */

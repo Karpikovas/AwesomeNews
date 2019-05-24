@@ -1,5 +1,6 @@
 import * as actionTypes from './actionType';
 import axios from 'axios';
+import {setCategories} from "./news";
 
 export const authStart = () => {
     return {
@@ -47,7 +48,7 @@ export const authLogin = (username, password) => {
                 "Access-Control-Allow-Origin": "*",
             }
         };
-        axios.post("https://cors-anywhere.herokuapp.com/"+ 'http://84.201.147.3:8080/index.php/api/auth/login',{
+        axios.post("https://cors-anywhere.herokuapp.com/"+ 'http://130.193.44.202:80/index.php/api/auth/login',{
             username: username,
             password: password
         }, axiosConfig).then(res => {
@@ -65,6 +66,7 @@ export const authLogin = (username, password) => {
             })
     }
 };
+
 /*
 export const authSignUp = (username, email,  password1, password2) => {
     return dispatch =>{
@@ -95,6 +97,8 @@ export const authCheckState = () => {
             console.log("UNDEF");
             dispatch(logout());
         } else {
+            const categories = JSON.parse(localStorage.getItem('categories'));
+            dispatch(setCategories(categories));
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
             if (expirationDate <= new Date()){
                 dispatch(logout());
@@ -104,4 +108,42 @@ export const authCheckState = () => {
             }
         }
     }
-}
+};
+/*
+export const authLogin = (username, password) => {
+    return dispatch =>{
+        dispatch(authStart());
+
+        if (username === "Alex1")
+        {
+            const token = "111";
+            console.log(token);
+            const expirationDate = new Date(new Date().getTime() + 3600 * 1000);
+            localStorage.setItem('token', token);
+            localStorage.setItem('expirationDate', expirationDate);
+
+            var categories = JSON.parse(localStorage.getItem('categories'));
+
+
+            if (categories.length == 0)
+            {
+                console.log(categories.length);
+                localStorage.setItem('categories', JSON.stringify([{key: 1, label: 'Мир', arg: 'world'}]));
+                categories = JSON.parse(localStorage.getItem('categories'));
+
+
+            }
+
+            dispatch(setCategories(categories));
+
+            console.log(categories);
+            console.log("RTY");
+            dispatch(authSuccess(token));
+            dispatch(checkAuthTimeout(3600));
+        }
+
+
+
+    }
+};
+*/

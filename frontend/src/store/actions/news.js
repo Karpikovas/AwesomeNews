@@ -2,6 +2,20 @@ import * as actionTypes from './actionType';
 import axios from 'axios';
 import {authCheckState} from "./auth";
 
+var removeByAttr = function(arr, attr, value){
+    var i = arr.length;
+    while(i--){
+        if( arr[i]
+            && arr[i].hasOwnProperty(attr)
+            && (arguments.length > 2 && arr[i][attr] === value ) ){
+
+            arr.splice(i,1);
+
+        }
+    }
+    return arr;
+}
+
 export function newsHasErrored(bool) {
     return {
         type: actionTypes.NEWS_HAS_ERRORED,
@@ -21,6 +35,60 @@ export function newsGetDataSuccess(news) {
         type: actionTypes.NEWS_GET_DATA_SUCCESS,
         news
     };
+}
+
+export function setCategories(categories) {
+
+    return {
+        type: actionTypes.SET_CATEGORIES,
+        categories
+    };
+}
+export function updateCategories(categories) {
+
+    return {
+        type: actionTypes.UPDATE_CATEGORIES,
+        categories
+    };
+}
+export function setLocalCategories(categories) {
+    return (dispatch) => {
+        dispatch(setCategories(categories));
+        console.log(categories);
+
+        var category = JSON.parse(localStorage.getItem('categories'));
+        category.push(categories);
+        //category.concat(JSON.stringify(categories));
+
+        localStorage.setItem('categories', JSON.stringify(category));
+        //localStorage.setItem('categories', JSON.stringify(this.state.categories));
+
+        const categorys = JSON.parse(localStorage.getItem('categories'));
+        console.log("WWWWWWWWWW");
+        console.log(categorys);
+    }
+}
+export function deleteCategories(categories) {
+    return (dispatch) => {
+
+
+        var category = JSON.parse(localStorage.getItem('categories'));
+        console.log(category);
+
+        console.log(categories);
+
+        removeByAttr(category, 'key', categories.key);
+        //category.concat(JSON.stringify(categories));
+
+        localStorage.setItem('categories', JSON.stringify(category));
+        //localStorage.setItem('categories', JSON.stringify(this.state.categories));
+
+        const categorys = JSON.parse(localStorage.getItem('categories'));
+        console.log("WWWWWWWWWW");
+        console.log(categorys);
+
+        dispatch(updateCategories(category));
+    }
 }
 /*
 export function newsGetData() {

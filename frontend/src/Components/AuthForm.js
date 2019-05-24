@@ -89,7 +89,7 @@ const styles = theme => ({
     render() {
         const { classes, theme } = this.props;
         return (
-            <div style={{textAlign:'center'}}>
+            <div style={{textAlign:'center', minHeight:'400px'}}>
                 <Grid
                     container
                     spacing={0}
@@ -101,7 +101,7 @@ const styles = theme => ({
 
                     <Grid item xs={8}>
                         <Paper className={classes.paper} elevation={24}>
-                            <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'30vh',marginTop: 20}} />
+                            <img src={logo} alt="My logo" style={{ backgroundSize: 'cover', height:'200px', minHeight:'10px',marginTop: 20}} />
                             <Typography  variant="h2" gutterBottom  style={{fontFamily: '"Black Ops One", cursive', color:'#3977e3'}}>
                                 A W E S O M E - N E W S
                             </Typography>

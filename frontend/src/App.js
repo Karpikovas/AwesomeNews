@@ -33,14 +33,15 @@ class App extends React.Component {
                             <Footer/>
                         </div>
                         :
-                        <div style={{width:'100 vw', height: '49vw',background: 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59)'}}>
-                            <AuthForm/>
+                        <div style={{  position: 'fixed', top: '0', bottom: '0', minWidth: '320px', minHeight: 'auto', width: '100%', height: 'auto', backgroundSize: 'cover',background: 'linear-gradient(to right, #12c2e9, #c471ed, #f64f59) center'}}>
+<AuthForm/>
                         </div>
                 }
             </div>
         );
     }
-}
+}//top: '0',bottom: '0',position: 'fixed',
+//position: 'fixed', top: '0', bottom: '0', minWidth: '320px', minHeight: '100%', width: '100%',height: 'auto',
 
 App.propTypes = {
     classes: PropTypes.object.isRequired,

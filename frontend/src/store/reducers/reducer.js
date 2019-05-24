@@ -1,11 +1,21 @@
 import * as actionTypes from '../actions/actionType';
 import { updateObject } from '../utility';
 
+/*
+* 0 - Главные
+* 1 - Политика
+* 2 - Мир
+* 3 - Авто
+* 4 - Общество
+* 5 - Музыка
+* 6 - Спорт
+* 7 - Технологии*/
 const initialState = {
     token: null,
     news: [],
     hasErrored: false,
-    isLoading: false
+    isLoading: false,
+    categories: [ ],
 };
 
 const newsIsLoading = (state, action) => {
@@ -29,7 +39,19 @@ const newsGetDataSuccess = (state, action) => {
         //news: action.news
         //news: [...state.news, action.news]
     }
-}
+};
+
+const setCategories = (state, action) => {
+    return {
+        categories: state.categories.concat(action.categories)
+    }
+};
+
+const updateCategories = (state, action) => {
+    return {
+        categories: action.categories
+    }
+};
 
 const authStart = (state, action) => {
     return updateObject(state, {
@@ -67,6 +89,8 @@ const reducer = (state=initialState, action) => {
         case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
+        case actionTypes.SET_CATEGORIES: return setCategories(state, action);
+        case actionTypes.UPDATE_CATEGORIES: return updateCategories(state, action);
 
         default:
             return state;
