@@ -118,7 +118,7 @@ class RSS extends AbstractController
             }
             mysqli_set_charset($link, 'utf8');
             $sql = mysqli_query($link, "Select news_json from news_it  where date between '$dOld' and '$dNew' order by date desc ");
-            file_put_contents('mysql.txt', $sql);
+//            file_put_contents('mysql.txt', $sql);
 
             while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
                 $resultAll['item'][] = $result['news_json'];
