@@ -26,10 +26,15 @@ class RSS extends AbstractController
 
     public function index(Request $request){
 
+//        $host = 'localhost';  // Хост,
+//        $user = 'cracksasha';    // Имя созданного вами пользователя
+//        $pass = 'SASHA1999'; // Установленный вами пароль пользователю
+//        $db_name = 'users';   // Имя базы данных
         $host = '130.193.44.202';  // Хост,
         $user = 'awesome';    // Имя созданного вами пользователя
         $pass = 'awesome1999'; // Установленный вами пароль пользователю
         $db_name = 'users';   // Имя базы данных
+
         $link = mysqli_connect($host, $user, $pass, $db_name); // Соединяемся с базой
 
         // Ругаемся, если соединение установить не удалось
@@ -75,15 +80,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_it where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_it (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_it (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -113,6 +118,8 @@ class RSS extends AbstractController
             }
             mysqli_set_charset($link, 'utf8');
             $sql = mysqli_query($link, "Select news_json from news_it  where date between '$dOld' and '$dNew' order by date desc ");
+            file_put_contents('mysql.txt', $sql);
+
             while ($result = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
                 $resultAll['item'][] = $result['news_json'];
             }
@@ -140,15 +147,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_world where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_world (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_world (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -195,15 +202,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_society where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_society (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_society (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -248,15 +255,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_sport where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_sport (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_sport (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -302,15 +309,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_music where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_music (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_music (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -356,15 +363,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_auto where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_auto (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_auto (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
@@ -410,15 +417,15 @@ class RSS extends AbstractController
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => $category
                 );
                 $jsonEncode = json_encode($json, JSON_UNESCAPED_UNICODE);
                 mysqli_set_charset($link, 'utf8');
                 $sql = mysqli_query($link, "select title from news_politics where title = '$item->title'");
                 $result = mysqli_fetch_assoc($sql);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_politics (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_politics (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', '$category' )");
                 }else{
                     continue;
                 }
