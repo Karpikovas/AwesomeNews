@@ -285,7 +285,7 @@ class Content extends Component {
         if (this.state.data.length === 0)
         {
             //Current
-            /*this.setState({isLoading: true})
+            this.setState({isLoading: true})
             date = datee + monthNames[month] + year;
             toDate = new Date();
             toDate.setDate(toDate.getDate());
@@ -295,14 +295,15 @@ class Content extends Component {
             year = toDate.getFullYear();
 
             toDate = datee + monthNames[month] + year;
-*/
+/*
             this.setState({isLoading: true})
             date = '25May2019';
             toDate = '24May2019';
-        } else if (this.state.flag){
+  */      } else if (this.state.flag){
+            console.log("THIS");
             date = toDate;
 
-            toDate = new Date(year, month, datee);
+            toDate = new Date(date);
             toDate.setDate(toDate.getDate()-1);
             datee = toDate.getDate(); //Current Date
             month = toDate.getMonth(); //Current Month
@@ -310,6 +311,7 @@ class Content extends Component {
 
             toDate = datee + monthNames[month] + year;
         } else {
+            console.log("NO THIS");
             date = new Date(year, month, datee);
             date.setDate(date.getDate()+1);
             datee = date.getDate(); //Current Date
@@ -368,7 +370,7 @@ class Content extends Component {
         var differ = diff(this.props.categories, this.state.categories);
         console.log(differ);
 
-        if (differ.length != 0){
+        if (differ.length != 0 && !this.state.flag){
             var Curdate;
             if (this.state.newNews[0] !== undefined)
                 Curdate = new Date (this.state.newNews[0].date[0]);
@@ -391,53 +393,61 @@ class Content extends Component {
                 if (data.arg === 'IT')
                     diffMas.push(IT);
             });
-        }
-        console.log("RESULT");
-        console.log(diffMas);
-        Promise.all(diffMas)
-            .then((res) => {
+            console.log("RESULT");
+            console.log(diffMas);
+            Promise.all(diffMas)
+                .then((res) => {
 
-               // console.log(res);
-                for (var i = 0; i < res.length; i++)
-                {
-
-                    console.log("DDDD");
-                    console.log(this.state.length);
-
-                    for (var j = 0; j < res[i].length; j++)
+                    // console.log(res);
+                    for (var i = 0; i < res.length; i++)
                     {
-                        var thatDate = new Date (res[i][j].date[0]);
-                        console.log(thatDate, Curdate);
 
-                        if ( thatDate < Curdate )
+                        console.log("DDDD");
+                        console.log(this.state.length);
+
+                        for (var j = 0; j < res[i].length; j++)
                         {
-                            console.log(res[i][j]);
+                            var thatDate = new Date (res[i][j].date[0]);
+                            console.log(thatDate, Curdate);
 
-                            this.setState({
-                                newNews: this.state.newNews.concat(res[i][j])
-                            });
+                            if ( thatDate < Curdate )
+                            {
+                                console.log(res[i][j]);
 
+                                this.setState({
+                                    newNews: this.state.newNews.concat(res[i][j])
+                                });
+
+                            }
                         }
+
                     }
+                    var newdata = this.state.newNews.slice().sort(function(a,b){
+                        return new Date(b.date[0]) - new Date(a.date[0]);
+                    });
+                    var length = newdata.length;
 
-                }
-                var newdata = this.state.newNews.slice().sort(function(a,b){
-                    return new Date(b.date[0]) - new Date(a.date[0]);
+                    this.setState({
+                        newNews: newdata,
+                        length: this.state.length + length,
+                        categories: this.props.categories
+                    });
+
+                    console.log(this.state.newNews);
+
+                })
+                .catch(error =>{
+                    console.log('err ' + error);
                 });
-                var length = newdata.length;
+            date = new Date(year, month, datee);
+            date.setDate(date.getDate()-1);
+            datee = date.getDate(); //Current Date
+            month = date.getMonth(); //Current Month
+            year = date.getFullYear();
 
-                this.setState({
-                    newNews: newdata,
-                    length: this.state.length + length,
-                    categories: this.props.categories
-                });
+            date = datee + monthNames[month] + year;
+        }
 
-                console.log(this.state.newNews);
-
-            })
-            .catch(error =>{
-                console.log('err ' + error);
-            });
         if (this.state.flag)
         {
             var mas = [];
@@ -566,7 +576,8 @@ class Content extends Component {
 
             if (!this.state.flag && !this.state.hasMoreItems) this.handleClick();
             else if ( this.state.length === 0 ){
-                this.setState({flag: true, newNews: []})
+                console.log("RRRR");
+                this.setState({flag: true,   newNews: []})
             } else
             {
                 var length = this.state.length;
