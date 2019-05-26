@@ -64,8 +64,6 @@ export function setLocalCategories(categories) {
         //localStorage.setItem('categories', JSON.stringify(this.state.categories));
 
         const categorys = JSON.parse(localStorage.getItem('categories'));
-        console.log("WWWWWWWWWW");
-        console.log(categorys);
     }
 }
 export function deleteCategories(categories) {
@@ -73,9 +71,6 @@ export function deleteCategories(categories) {
 
 
         var category = JSON.parse(localStorage.getItem('categories'));
-        console.log(category);
-
-        console.log(categories);
 
         removeByAttr(category, 'key', categories.key);
         //category.concat(JSON.stringify(categories));
@@ -84,8 +79,6 @@ export function deleteCategories(categories) {
         //localStorage.setItem('categories', JSON.stringify(this.state.categories));
 
         const categorys = JSON.parse(localStorage.getItem('categories'));
-        console.log("WWWWWWWWWW");
-        console.log(categorys);
 
         dispatch(updateCategories(category));
     }

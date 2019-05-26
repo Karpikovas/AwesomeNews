@@ -150,18 +150,16 @@ class Header extends React.Component {
             this.props.setCategory(chip);
     };
     delete = data => {
-        console.log(data);
-        console.log("LLLLLLLLLLLL");
         var chip = {
             key: data.key,
             label: data.label,
             arg: data.arg
         };
 
-        if (this.props.categories.length === 1){
-            this.props.setCategory({key: 2, label: 'Мир', arg: 'world'});
+        if (this.props.categories.length > 1){
+            this.props.deleteCategory(chip);
         }
-        this.props.deleteCategory(chip);
+
 
     }
 

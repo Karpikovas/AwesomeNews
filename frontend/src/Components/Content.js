@@ -182,9 +182,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(C
 import React, { Component } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from "axios";
-import {newsGetDataSuccess, newsHasErrored} from "../store/actions/news";
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import { withStyles } from '@material-ui/core/styles';
 import VerticalTimeline  from './VerticalTimeline';
 import WorkIcon from '@material-ui/icons/Devices';
@@ -196,14 +193,19 @@ import '../CSS/VerticalTimeline.css';
 import '../CSS/VerticalTimelineElement.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import NavigationIcon from '@material-ui/icons/Navigation';
-import Scroll from 'react-infinite-loading';
-import data from '../4pda';
-import {logout} from "../store/actions/auth";
-import DialogActions from "./AuthForm";
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import Fade from '@material-ui/core/Fade';
 import InfoIcon from '@material-ui/icons/Info';
+
+import PoliticIcon from '@material-ui/icons/AccountBalance'
+import SportIcon from '@material-ui/icons/FitnessCenter'
+import MusicIcon from '@material-ui/icons/Headset'
+import AutoIcon from '@material-ui/icons/DirectionsCar'
+import ITIcon from '@material-ui/icons/Computer'
+import RestoreIcon from '@material-ui/icons/Restore';
+import WorldIcon from '@material-ui/icons/Public'
+import GroupIcon from '@material-ui/icons/Group';
 
 // import './People.css';
 
@@ -211,6 +213,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
 var date, toDate;
+var addNew = false;
 date = new Date();
 date.setDate(date.getDate()+1);
 var datee = date.getDate(); //Current Date
@@ -220,6 +223,34 @@ var year = date.getFullYear();
 function diff(a1, a2) {
     return a1.filter(i=>a2.indexOf(i)<0)
         .concat(a2.filter(i=>a1.indexOf(i)<0))
+}
+function arrDiff(result1, result2) {
+    // sort both arrays (or this won't work)
+    result1.sort(function(a, b){
+        if(a.arg < b.arg) { return -1; }
+        if(a.arg > b.arg) { return 1; }
+        return 0;
+    });
+    result2.sort(function(a, b){
+        if(a.arg < b.arg) { return -1; }
+        if(a.arg > b.arg) { return 1; }
+        return 0;
+    });
+    var props = ['key', 'arg'];
+    var result = result1.filter(function(o1){
+        // filter out (!) items in result2
+        return !result2.some(function(o2){
+            return o1.key === o2.key;          // assumes unique id
+        });
+    }).map(function(o){
+        // use reduce to make objects with only the required properties
+        // and map to apply this to the filtered array as a whole
+        return props.reduce(function(newo, arg){
+            newo[arg] = o[arg];
+            return newo;
+        }, {});
+    });
+    return result;
 }
 const styles = theme => ({
     content:{
@@ -244,8 +275,100 @@ const styles = theme => ({
     }
 });
 
+const chipRestore= {
+        backgroundColor: "#FA4CE3",
+        color: "white",
+
+};
+const chipWorld = {
+        backgroundColor: "#06E5AE",
+        color: "white",
+};
+const chipPolitic = {
+        backgroundColor: "#9706E5",
+        color: "white",
+};
+const chipSocial = {
+        backgroundColor: "#4de0e8",
+        color: "white"
+};
+const chipAuto = {
+        backgroundColor: "#ff0066",
+        color: "white",
+};
+const chipIT = {
+        backgroundColor: "#3399ff",
+        color: "white",
+};
+const chipSport = {
+        backgroundColor: "#3314FF",
+        color: "white"
+};
+const chipMusic = {
+        backgroundColor: "#07DA1A",
+        color: "white"
+};
 
 
+function getStyle(category){
+    if (category === 'main')
+        return chipRestore;
+    else if (category === 'world')
+        return chipWorld;
+    else if (category === 'politics')
+        return chipPolitic;
+    else if (category === 'auto')
+        return chipAuto;
+    else if (category === 'society')
+        return chipSocial;
+    else if (category === 'music')
+        return chipMusic;
+    else if (category === 'sport')
+        return chipSport;
+    else if (category === 'IT')
+        return chipIT;
+    else return chipRestore;
+}
+function filterInPlace (array, predicate) {
+    let end = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        const obj = array[i];
+
+        if (predicate(obj)) {
+            array[end++] = obj;
+        }
+    }
+
+    array.length = end;
+    return array;
+};
+function getAxios(category, date, toDate, axiosConfig) {
+    var myAxios = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=${category}&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        .then(response => response.data)
+        .catch(err => err);
+    return myAxios;
+}
+
+function getIcon(category) {
+    if (category === 'world')
+        return <WorldIcon/>;
+    if (category === 'main')
+        return <RestoreIcon/>;
+    if (category === 'politics')
+        return <PoliticIcon/>;
+    if (category === 'auto')
+        return <AutoIcon/>;
+    if (category === 'society')
+        return <GroupIcon/>;
+    if (category === 'music')
+        return <MusicIcon/>;
+    if (category === 'sport')
+        return <SportIcon/>;
+    if (category === 'IT')
+        return <ITIcon/>;
+
+}
 class Content extends Component {
     constructor(props) {
         super(props)
@@ -261,7 +384,15 @@ class Content extends Component {
             token: this.props.token,
             newNews: []
         }
+        this.axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+                "Authorization": `Bearer ${this.props.token}`
+            }
+        };
     }
+
 
     componentDidMount() {
         this._isMounted = true;
@@ -279,9 +410,96 @@ class Content extends Component {
         this.setState({ open: false });
     };
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.categories.length > this.props.categories.length)
+        {
+            console.log("NEWPROP");
+            var Curdate;
+            Curdate = new Date (this.state.data[this.state.data.length - 1].date[0]);
 
+            console.log(Curdate);
+
+            var mas = [];
+
+            var data = nextProps.categories[nextProps.categories.length - 1];
+            if (data.arg === 'world')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'main')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'politics')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'auto')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'society')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'music')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'sport')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+            if (data.arg === 'IT')
+                mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
+
+            Promise.all(mas)
+                .then((res) => {
+
+                    // console.log(res);
+                    for (var i = 0; i < res.length; i++)
+                    {
+
+                        for (var j = 0; j < res[i].length; j++)
+                        {
+                            var thatDate = new Date (res[i][j].date[0]);
+                            //console.log(thatDate, Curdate);
+
+                            if ( thatDate < Curdate )
+                            {
+
+                                this.setState({
+                                    newNews: this.state.newNews.concat(res[i][j])
+                                });
+
+                            }
+                        }
+
+                    }
+                    var newdata = this.state.newNews.slice().sort(function(a,b){
+                        return new Date(b.date[0]) - new Date(a.date[0]);
+                    });
+                    var length = newdata.length;
+
+                    this.setState({
+                        newNews: newdata,
+                        length: this.state.length + length,
+                        categories: this.props.categories
+                    });
+
+                })
+                .catch(error =>{
+                    console.log('err ' + error);
+                });
+        }
+
+        else
+        {
+            var result = arrDiff(this.props.categories, nextProps.categories);
+            console.log("RESULT");
+            console.log(result[0].arg);
+            var newdata = this.state.newNews;
+            console.log(newdata);
+
+
+            const newArray = newdata.filter(obj => obj.category !== result[0].arg);
+
+            console.log(newArray);
+            this.setState({
+                newNews: newArray,
+                length: newArray.length,
+                categories: this.props.categories
+            });
+        }
+
+    }
     loadContent() {
-
         if (this.state.data.length === 0)
         {
             //Current
@@ -300,7 +518,7 @@ class Content extends Component {
             date = '25May2019';
             toDate = '24May2019';
   */      } else if (this.state.flag){
-            console.log("THIS");
+            this.setState({hasMoreItems: false});
             date = toDate;
 
             toDate = new Date(date);
@@ -310,70 +528,58 @@ class Content extends Component {
             year = toDate.getFullYear();
 
             toDate = datee + monthNames[month] + year;
-        } else {
-            console.log("NO THIS");
-            date = new Date(year, month, datee);
-            date.setDate(date.getDate()+1);
-            datee = date.getDate(); //Current Date
-            month = date.getMonth(); //Current Month
-            year = date.getFullYear();
-
-            date = datee + monthNames[month] + year;
         }
 
         const { paginationIndex, data } = this.state;
         this._isMounted = true;
 
         //var dataa;
-        console.log("TOKEN");
-        console.log(this.state.token);
-        let axiosConfig = {
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
-                "Authorization": `Bearer ${this.state.token}`
-            }
-        };
-        const WORLD = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=world&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+       // console.log("TOKEN");
+       // console.log(this.state.token);
+
+        const WORLD = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=world&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const IT = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=IT&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const IT = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=IT&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const SOCIETY = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=society&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const SOCIETY = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=society&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const MAIN = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=main&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const MAIN = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=main&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const POLITIC = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=politics&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const POLITIC = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=politics&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const AUTO = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=auto&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const AUTO = axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=auto&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const MUSIC= axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=music&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const MUSIC= axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=music&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
-        const SPORT= axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=sport&dateNew=${date}&dateOld=${toDate}`,  axiosConfig)
+        const SPORT= axios.get("https://cors-anywhere.herokuapp.com/"+ `http://130.193.44.202:80/index.php/api/RSS?category=sport&dateNew=${date}&dateOld=${toDate}`,  this.axiosConfig)
             .then(response => response.data)
             .catch(err => err);
 
         var diffMas = [];
-        var differ = diff(this.props.categories, this.state.categories);
-        console.log(differ);
+        //var differ = diff(this.props.categories, this.state.categories);
+        var differ = [];
+        var resr = false;
 
-        if (differ.length != 0 && !this.state.flag){
+        if (differ.length != 0 && !this.state.flag && resr){
+            //this.setState({hasMoreItems: false});
             var Curdate;
-            if (this.state.newNews[0] !== undefined)
-                Curdate = new Date (this.state.newNews[0].date[0]);
+            Curdate = new Date (this.state.data[this.state.data.length - 1].date[0]);
+
+            console.log(Curdate);
 
             differ.map( data => {
                 if (data.arg === 'world')
@@ -393,22 +599,20 @@ class Content extends Component {
                 if (data.arg === 'IT')
                     diffMas.push(IT);
             });
-            console.log("RESULT");
-            console.log(diffMas);
+
             Promise.all(diffMas)
                 .then((res) => {
+                    console.log("RESULT");
+                    console.log(res);
 
                     // console.log(res);
                     for (var i = 0; i < res.length; i++)
                     {
 
-                        console.log("DDDD");
-                        console.log(this.state.length);
-
                         for (var j = 0; j < res[i].length; j++)
                         {
                             var thatDate = new Date (res[i][j].date[0]);
-                            console.log(thatDate, Curdate);
+                            //console.log(thatDate, Curdate);
 
                             if ( thatDate < Curdate )
                             {
@@ -453,62 +657,83 @@ class Content extends Component {
             var mas = [];
             this.props.categories.map( data => {
                 if (data.arg === 'world')
-                    mas.push(WORLD);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'main')
-                    mas.push(MAIN);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'politics')
-                    mas.push(POLITIC);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'auto')
-                    mas.push(AUTO);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'society')
-                    mas.push(SOCIETY);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'music')
-                    mas.push(MUSIC);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'sport')
-                    mas.push(SPORT);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
                 if (data.arg === 'IT')
-                    mas.push(IT);
+                    mas.push(getAxios(data.arg, date, toDate, this.axiosConfig));
             });
             Promise.all(mas)
                 .then((res) => {
+                    //console.log("RESULT");
+                    //console.log(date);
+                    //console.log(res);
 
-                    for (var i = 0; i < res.length; i++)
+                    if (res !== [])
                     {
-                        this.setState({
-                            newNews: this.state.newNews.concat(res[i])
+                        for (var i = 0; i < res.length; i++)
+                        {
+                            this.setState({
+                                newNews: this.state.newNews.concat(res[i])
+                            });
+                        }
+                        var newdata = this.state.newNews.slice().sort(function(a,b){
+                            return new Date(b.date[0]) - new Date(a.date[0]);
                         });
-                    }
-                    var newdata = this.state.newNews.slice().sort(function(a,b){
-                        return new Date(b.date[0]) - new Date(a.date[0]);
-                    });
-                    var length = newdata.length;
-                    var minLength = 10;
-                    if (length < 10)
-                        minLength = length;
+                        //console.log("SORT");
+                        //console.log(newdata);
+                        var length = newdata.length;
+                        var minLength = 10;
+                        if (length < 10)
+                            minLength = length;
 
-                    if (res.length === 0)
-                    {
+                        if (res.length === 0)
+                        {
+                            this.setState({
+                                hasMoreItems: false,
+                                flag: false,
+                            });
+                        }
+                        var dataArr = newdata.slice(0, minLength);
+                        //console.log("SHORT");
+                        //console.log(dataArr);
+                        var newsArr = newdata.splice( minLength);
+                        //console.log("OTHER");
+                        //console.log(newsArr);
                         this.setState({
-                            hasMoreItems: false,
+                            data: [...data, ...dataArr],
+                            newNews: newsArr,
+                            paginationIndex: paginationIndex + 1,
+                            hasMoreItems: true,
+                            isLoading: false,
                             flag: false,
+                            length: length - minLength,
+                            categories: this.props.categories
                         });
-                    }
-                    var dataArr = newdata.slice(0, minLength);
-                    var newsArr = newdata.splice( minLength);
-                    this.setState({
-                        data: [...data, ...dataArr],
-                        newNews: newsArr,
-                        paginationIndex: paginationIndex + 1,
-                        hasMoreItems: true,
-                        isLoading: false,
-                        flag: false,
-                        length: length - minLength,
-                        categories: this.props.categories
-                    });
+                        (console.log(this.state.newNews));
+                    } else
+                        {
+                            this.setState({
+                                hasMoreItems: false,
+                                flag: false,
+                            });
+                        }
+
+
 
                 })
                 .catch(error =>{
-                    console.log('err ' + error);
+                    //console.log('err ' + error);
                     this.setState({
                         hasMoreItems: false,
                         flag: false,
@@ -572,11 +797,9 @@ class Content extends Component {
                 });*/
         } else
         {
-
-
             if (!this.state.flag && !this.state.hasMoreItems) this.handleClick();
             else if ( this.state.length === 0 ){
-                console.log("RRRR");
+                //console.log("RRRR");
                 this.setState({flag: true,   newNews: []})
             } else
             {
@@ -615,8 +838,8 @@ class Content extends Component {
                     /*key = {item.date[0]}
                     */className="vertical-timeline-element--work"
                     date={item.date[0].slice(0,-5)}
-                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                    icon={<WorkIcon />}
+                    iconStyle={getStyle(item.category)}
+                    icon={getIcon(item.category)}
 
                 >
                     <h3 className="vertical-timeline-element-title">{item.title[0]}</h3>
