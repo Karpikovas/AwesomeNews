@@ -6,10 +6,16 @@
  * Time: 18:54
  */
 
-        $host = '130.193.44.202';  // Хост,
-        $user = 'awesome';    // Имя созданного вами пользователя
-        $pass = 'awesome1999'; // Установленный вами пароль пользователю
-        $db_name = 'users';   // Имя базы данных
+//        $host = 'localhost';  // Хост,
+//        $user = 'cracksasha';    // Имя созданного вами пользователя
+//        $pass = 'SASHA1999'; // Установленный вами пароль пользователю
+//        $db_name = 'users';   // Имя базы данных
+
+$host = '130.193.44.202';  // Хост,
+$user = 'awesome';    // Имя созданного вами пользователя
+$pass = 'awesome1999'; // Установленный вами пароль пользователю
+$db_name = 'users';   // Имя базы данных
+
         $link = mysqli_connect($host, $user, $pass, $db_name); // Соединяемся с базо
         // Ругаемся, если соединение установить не удалось
         if (!$link) {
@@ -31,7 +37,7 @@
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => "IT"
                 );
 
                 mysqli_set_charset($link, 'utf8');
@@ -43,8 +49,8 @@
                 $result = mysqli_fetch_assoc($sql);
                 print_r($result);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_it (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_it (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'IT' )");
                 }else{
                     continue;
                 }
@@ -64,7 +70,7 @@
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => 'world'
                 );
 
                 mysqli_set_charset($link, 'utf8');
@@ -76,8 +82,8 @@
                 $result = mysqli_fetch_assoc($sql);
                 print_r($result);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_world (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_world (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'world' )");
                 }else{
                     continue;
                 }
@@ -98,7 +104,7 @@
                     "guid" => $item->guid,
                     "description" => $item->description,
                     "date" => $item->pubDate,
-
+                    "category" => 'society'
                 );
 
                 mysqli_set_charset($link, 'utf8');
@@ -108,8 +114,8 @@
                 $result = mysqli_fetch_assoc($sql);
                 print_r($result);
                 if (!$result){
-                    $sql = mysqli_query($link, "INSERT into news_society (title, link, guid, description, date, news_json)
-                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+                    $sql = mysqli_query($link, "INSERT into news_society (title, link, guid, description, date, news_json, category)
+                                                  values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'society' )");
                 }else{
                     continue;
                 }
@@ -129,7 +135,7 @@
             "guid" => $item->guid,
             "description" => $item->description,
             "date" => $item->pubDate,
-
+            "category" => 'auto'
         );
 
         mysqli_set_charset($link, 'utf8');
@@ -141,8 +147,8 @@
         $result = mysqli_fetch_assoc($sql);
         print_r($result);
         if (!$result){
-            $sql = mysqli_query($link, "INSERT into news_auto (title, link, guid, description, date, news_json)
-                                                      values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+            $sql = mysqli_query($link, "INSERT into news_auto (title, link, guid, description, date, news_json, category)
+                                                      values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'auto' )");
         }else{
             continue;
         }
@@ -162,7 +168,7 @@
             "guid" => $item->guid,
             "description" => $item->description,
             "date" => $item->pubDate,
-
+            "category" => 'politics'
         );
 
         mysqli_set_charset($link, 'utf8');
@@ -174,8 +180,8 @@
         $result = mysqli_fetch_assoc($sql);
         print_r($result);
         if (!$result){
-            $sql = mysqli_query($link, "INSERT into news_politics (title, link, guid, description, date, news_json)
-                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+            $sql = mysqli_query($link, "INSERT into news_politics (title, link, guid, description, date, news_json, politics)
+                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'politics' )");
         }else{
             continue;
         }
@@ -195,7 +201,7 @@
             "guid" => $item->guid,
             "description" => $item->description,
             "date" => $item->pubDate,
-
+            "category" => 'sport'
         );
 
         mysqli_set_charset($link, 'utf8');
@@ -207,8 +213,8 @@
         $result = mysqli_fetch_assoc($sql);
         print_r($result);
         if (!$result){
-            $sql = mysqli_query($link, "INSERT into news_sport (title, link, guid, description, date, news_json)
-                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+            $sql = mysqli_query($link, "INSERT into news_sport (title, link, guid, description, date, news_json, category)
+                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'sport' )");
         }else{
             continue;
         }
@@ -228,7 +234,7 @@ foreach ($simpleXml->channel->item as $item) {
         "guid" => $item->guid,
         "description" => $item->description,
         "date" => $item->pubDate,
-
+        "category" => 'music'
     );
 
     mysqli_set_charset($link, 'utf8');
@@ -240,8 +246,8 @@ foreach ($simpleXml->channel->item as $item) {
     $result = mysqli_fetch_assoc($sql);
     print_r($result);
     if (!$result){
-        $sql = mysqli_query($link, "INSERT into news_music (title, link, guid, description, date, news_json)
-                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode' )");
+        $sql = mysqli_query($link, "INSERT into news_music (title, link, guid, description, date, news_json, category)
+                                                          values ('$item->title', '$item->link', '$item->guid', '$item->description','$item->pubDate', '$jsonEncode', 'music' )");
     }else{
         continue;
     }
