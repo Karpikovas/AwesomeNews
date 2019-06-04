@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\NewsSociety;
+use App\Entity\NewsMusic;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method NewsSociety|null find($id, $lockMode = null, $lockVersion = null)
- * @method NewsSociety|null findOneBy(array $criteria, array $orderBy = null)
- * @method NewsSociety[]    findAll()
- * @method NewsSociety[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method NewsMusic|null find($id, $lockMode = null, $lockVersion = null)
+ * @method NewsMusic|null findOneBy(array $criteria, array $orderBy = null)
+ * @method NewsMusic[]    findAll()
+ * @method NewsMusic[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class NewsSocietyRepository extends ServiceEntityRepository
+class NewsMusicRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, NewsSociety::class);
+        parent::__construct($registry, NewsMusic::class);
     }
 
     // /**
-    //  * @return NewsSociety[] Returns an array of NewsSociety objects
+    //  * @return NewsMusic[] Returns an array of NewsMusic objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class NewsSocietyRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?NewsSociety
+    public function findOneBySomeField($value): ?NewsMusic
     {
         return $this->createQueryBuilder('n')
             ->andWhere('n.exampleField = :val')

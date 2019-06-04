@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  */
-class News
+class NewsAuto
 {
     /**
      * @ORM\Id()
@@ -45,6 +45,11 @@ class News
      * @ORM\Column(type="text")
      */
     private $NewsJSON;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $Category;
 
     public function getTitle(): ?string
     {
@@ -118,7 +123,17 @@ class News
         return $this;
     }
 
-    
+    public function getCategory(): ?string
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(string $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
 
 
 }

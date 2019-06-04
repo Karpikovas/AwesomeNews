@@ -17,108 +17,120 @@ class NewsSociety
     private $id;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $title;
+    private $Title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $link;
+    private $Link;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $guid;
+    private $Guid;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $description;
+    private $Description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $date;
+    private $Date;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
-    private $news_json;
+    private $NewsJSON;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $Category;
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        return $this->Title;
     }
 
-    public function setTitle(?string $title): self
+    public function setTitle(string $Title): self
     {
-        $this->title = $title;
+        $this->Title = $Title;
 
         return $this;
     }
 
     public function getLink(): ?string
     {
-        return $this->link;
+        return $this->Link;
     }
 
-    public function setLink(?string $link): self
+    public function setLink(string $Link): self
     {
-        $this->link = $link;
+        $this->Link = $Link;
 
         return $this;
     }
 
     public function getGuid(): ?string
     {
-        return $this->guid;
+        return $this->Guid;
     }
 
-    public function setGuid(?string $guid): self
+    public function setGuid(string $Guid): self
     {
-        $this->guid = $guid;
+        $this->Guid = $Guid;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->Description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $Description): self
     {
-        $this->description = $description;
+        $this->Description = $Description;
 
         return $this;
     }
 
     public function getDate(): ?string
     {
-        return $this->date;
+        return $this->Date;
     }
 
-    public function setDate(?string $date): self
+    public function setDate(string $Date): self
     {
-        $this->date = $date;
+        $this->Date = $Date;
 
         return $this;
     }
 
-    public function getNewsJson(): ?string
+    public function getNewsJSON(): ?string
     {
-        return $this->news_json;
+        return $this->NewsJSON;
     }
 
-    public function setNewsJson(?string $news_json): self
+    public function setNewsJSON(string $NewsJSON): self
     {
-        $this->news_json = $news_json;
+        $this->NewsJSON = $NewsJSON;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(string $Category): self
+    {
+        $this->Category = $Category;
 
         return $this;
     }
