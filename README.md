@@ -10,6 +10,7 @@
 - sudo apt-get install php7.*-xml
 
 - sudo apt-get install php7.*-zip
+
 ### Install server
 - cd directory_project
 
