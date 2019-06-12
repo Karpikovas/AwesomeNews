@@ -65,3 +65,6 @@ CustomLog ${APACHE_LOG_DIR}/access.log combined
 DATABASE_URL= "yours database"
 ```
 
+- php bin/console doctrine:migration:diff
+
+- php bin/console doctrine:migration:migrate
