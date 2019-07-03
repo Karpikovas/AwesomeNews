@@ -1,3 +1,12 @@
+### Стартовая страница
+![Стартовая страница](https://pp.userapi.com/c855724/v855724460/85b29/bDTTv3HwQx8.jpg)
+
+### Главная страница
+![Главная страница](https://pp.userapi.com/c855736/v855736460/8776e/vr9T5R9as5c.jpg)
+
+### Меню
+![Меню](https://pp.userapi.com/c855736/v855736460/87775/U1qhgCsQgGU.jpg)
+
 # Install packages
 - sudo apt-get update
 
